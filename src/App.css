@@ -29,13 +29,14 @@
 .listing-container {
   display: grid;
   grid-template-columns: 400px 400px;
-  grid-auto-rows: 300px;
+  grid-auto-rows: 400px;
   grid-column-gap: 200px;
-  margin: 100px;
+  margin: 10%;
 }
 
 .listing {
-  border: 1px solid black;
+  box-shadow: 1px 1px #DDDDEE;
+  box-shadow: -1px -1px #DDDDEE;
   width: 400px;
   margin: 1rem;
   background: #FFFFFF;
@@ -46,9 +47,8 @@
   background: #CCCCDD;
 }
 
-.listingPage {
-  border: 1px solid black;
-  width: 400px;
+.listing-page {
+  text-align: center;
   margin: 1rem;
 }
 
@@ -72,6 +72,10 @@
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.05em;
+}
+
+.houseimg {
+  width: 100px;
 }
 
 .nav-elem:hover {

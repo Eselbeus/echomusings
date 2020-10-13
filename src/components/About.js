@@ -6,6 +6,19 @@ class About extends React.Component {
     return (
       <div className="about">
         <h1>About</h1>
+        <p>Insert Epic Bio here</p>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <p>Put mission statement about how we care about clients here.</p>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
       </div>
     )
   }

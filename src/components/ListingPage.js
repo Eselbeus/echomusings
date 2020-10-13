@@ -29,6 +29,7 @@ class ListingPage extends React.Component {
         <p>Price ${listingInfo ? listingInfo.price: ''}</p>
         <p>{listingInfo ? listingInfo.bed: ''} Bed, {listingInfo ? listingInfo.bath: ''} Bath</p>
         <p>{listingInfo ? listingInfo.description: ''}</p>
+        {listingInfo ? <img className="houseimg" src={listingInfo.imagelink}/> : ''}
       </div>
     )
   }

@@ -10,7 +10,7 @@ class Listing extends React.Component {
         <p>Sq. Feet: {this.props.listing.sqfeet}</p>
         <p>Price ${this.props.listing.price}</p>
         <p>{this.props.listing.bed} Bed, {this.props.listing.bath} Bath</p>
-
+        <img className="houseimg" src={this.props.listing.imagelink}/>
       </div>
     )
   }

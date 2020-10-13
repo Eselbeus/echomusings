@@ -7,18 +7,18 @@
       "price": 350000,
       "bed": 3,
       "bath": 2,
-      "imagelink" : "https://linkedin.com",
-      "description": "This is a medium house"
+      "imagelink" : "http://mobileimages.lowes.com/product/converted/090489/090489556181.jpg?size=pdhi",
+      "description": "This is a medium example house with picket fence. Very awesome"
     },
     {
       "id": 2,
-      "address": "15 Jefferson St. New York, NY",
+      "address": "1 Prairie Ln London, NJ",
       "sqfeet": 2300,
       "price": 400000,
       "bed": 4,
       "bath": 2,
-      "imagelink" : "https://linkedin.com",
-      "description": "This is a bigger house"
+      "imagelink" : "https://i.insider.com/5e00cf21e94e8625110f5574?width=1800&format=jpeg&auto=webp",
+      "description": "This is a bigger house. Also known as a castle"
     },
     {
       "id": 3,
@@ -26,6 +26,36 @@
       "sqfeet": 1700,
       "price": 250000,
       "bed": 3,
+      "bath": 1,
+      "imagelink" : "https://linkedin.com",
+      "description": "This is a small house"
+    },
+    {
+      "id": 4,
+      "address": "24 Jefferson St. New York, NY",
+      "sqfeet": 1200,
+      "price": 150000,
+      "bed": 2,
+      "bath": 1,
+      "imagelink" : "https://linkedin.com",
+      "description": "This is a small house"
+    },
+    {
+      "id": 5,
+      "address": "20 Jefferson St. New York, NY",
+      "sqfeet": 1700,
+      "price": 250000,
+      "bed": 3,
+      "bath": 1,
+      "imagelink" : "https://linkedin.com",
+      "description": "This is a small house"
+    },
+    {
+      "id": 6,
+      "address": "24 Jefferson St. New York, NY",
+      "sqfeet": 1200,
+      "price": 150000,
+      "bed": 2,
       "bath": 1,
       "imagelink" : "https://linkedin.com",
       "description": "This is a small house"
