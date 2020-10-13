@@ -1,0 +1,34 @@
+{
+  "listings": [
+    {
+      "id": 1,
+      "address": "12 Jefferson St. New York, NY",
+      "sqfeet": 2000,
+      "price": 350000,
+      "bed": 3,
+      "bath": 2,
+      "imagelink" : "https://linkedin.com",
+      "description": "This is a medium house"
+    },
+    {
+      "id": 2,
+      "address": "15 Jefferson St. New York, NY",
+      "sqfeet": 2300,
+      "price": 400000,
+      "bed": 4,
+      "bath": 2,
+      "imagelink" : "https://linkedin.com",
+      "description": "This is a bigger house"
+    },
+    {
+      "id": 3,
+      "address": "20 Jefferson St. New York, NY",
+      "sqfeet": 1700,
+      "price": 250000,
+      "bed": 3,
+      "bath": 1,
+      "imagelink" : "https://linkedin.com",
+      "description": "This is a small house"
+    }
+  ]
+}
