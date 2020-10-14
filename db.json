@@ -3,11 +3,13 @@
     {
       "id": 1,
       "address": "12 Jefferson St. New York, NY",
-      "sqfeet": 2000,
+      "sqfeet": "2100",
       "price": 350000,
       "bed": 3,
       "bath": 2,
       "imagelink": "http://mobileimages.lowes.com/product/converted/090489/090489556181.jpg?size=pdhi",
+      "imagelink2": "http://mobileimages.lowes.com/product/converted/090489/090489556181.jpg?size=pdhi",
+      "imagelink3": "http://mobileimages.lowes.com/product/converted/090489/090489556181.jpg?size=pdhi",
       "description": "This is a medium example house with picket fence. Very awesome"
     },
     {
@@ -18,6 +20,8 @@
       "bed": 4,
       "bath": 2,
       "imagelink": "https://i.insider.com/5e00cf21e94e8625110f5574?width=1800&format=jpeg&auto=webp",
+      "imagelink2": "https://i.insider.com/5e00cf21e94e8625110f5574?width=1800&format=jpeg&auto=webp",
+      "imagelink3": "https://i.insider.com/5e00cf21e94e8625110f5574?width=1800&format=jpeg&auto=webp",
       "description": "This is a bigger house. Also known as a castle"
     },
     {
@@ -28,6 +32,8 @@
       "bed": 6,
       "bath": 2,
       "imagelink": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
+      "imagelink2": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
+      "imagelink3": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
       "description": "The biggest little mcmansion you've ever seen."
     },
     {
@@ -38,6 +44,8 @@
       "bed": 2,
       "bath": 1,
       "imagelink": "https://linkedin.com",
+      "imagelink2": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
+      "imagelink3": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
       "description": "This is a small house"
     },
     {
@@ -48,6 +56,8 @@
       "bed": 3,
       "bath": 1,
       "imagelink": "https://linkedin.com",
+      "imagelink2": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
+      "imagelink3": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
       "description": "This is a small house"
     },
     {
@@ -58,6 +68,8 @@
       "bed": 2,
       "bath": 1,
       "imagelink": "https://linkedin.com",
+      "imagelink2": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
+      "imagelink3": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
       "description": "This is a small house"
     },
     {
@@ -67,17 +79,21 @@
       "bed": "6",
       "bath": "4",
       "imagelink": "",
+      "imagelink2": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
+      "imagelink3": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
       "description": "Weee",
       "id": 7
     },
     {
-      "address": "4",
-      "sqfeet": "4",
+      "address": "5",
+      "sqfeet": "800",
       "price": "4",
       "bed": "4",
-      "bath": "4",
+      "bath": "2",
       "imagelink": "",
-      "description": "4",
+      "imagelink2": "",
+      "imagelink3": "",
+      "description": "",
       "id": 8
     }
   ]

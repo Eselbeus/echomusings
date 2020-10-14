@@ -78,6 +78,11 @@
   width: 100px;
 }
 
+.houseimg-page {
+  width: 400px;
+  padding: 4px;
+}
+
 .nav-elem:hover {
   color: #444444;
 }

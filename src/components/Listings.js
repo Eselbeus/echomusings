@@ -12,6 +12,8 @@ class Listings extends React.Component {
     bed: '',
     bath: '',
     imagelink: '',
+    imagelink2: '',
+    imagelink3: '',
     description: ''
   }
 
@@ -33,6 +35,8 @@ class Listings extends React.Component {
     let bed = e.target.bed.value
     let bath = e.target.bath.value
     let imagelink = e.target.imagelink.value
+    let imagelink2 = e.target.imagelink2.value
+    let imagelink3 = e.target.imagelink3.value
     let description = e.target.description.value
 
     let config = {
@@ -48,6 +52,8 @@ class Listings extends React.Component {
         bed: bed,
         bath: bath,
         imagelink: imagelink,
+        imagelink2: imagelink2,
+        imagelink3: imagelink3,
         description: description
       })
     }
@@ -88,6 +94,8 @@ class Listings extends React.Component {
           <input className="listing-form-item" placeholder="Bed" name="bed" type="text" value={this.state.bed} onChange={this.changeHandler}/><br/><br/>
           <input className="listing-form-item" placeholder="Bath" name="bath" type="text" value={this.state.bath} onChange={this.changeHandler}/><br/><br/>
           <input className="listing-form-item" placeholder="Image Link" name="imagelink" type="text" value={this.state.imagelink} onChange={this.changeHandler}/><br/><br/>
+          <input className="listing-form-item" placeholder="Image Link 2" name="imagelink2" type="text" value={this.state.imagelink2} onChange={this.changeHandler}/><br/><br/>
+          <input className="listing-form-item" placeholder="Image Link 3" name="imagelink3" type="text" value={this.state.imagelink3} onChange={this.changeHandler}/><br/><br/>
           <textarea className="contact-item message-input" placeholder="Description" name="description" type="text" value={this.state.description} onChange={this.changeHandler}></textarea><br/>
           <input className="submit" type="submit" value="Create New Listing"/>
         </form>

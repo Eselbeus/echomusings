@@ -12,6 +12,8 @@ class ListingPage extends React.Component {
     bed: '',
     bath: '',
     imagelink: '',
+    imagelink2: '',
+    imagelink3: '',
     description: '',
     delete: false
   }
@@ -40,13 +42,16 @@ class ListingPage extends React.Component {
 
   submitHandler = (e) => {
     e.preventDefault()
-    let address = e.target.address.value
-    let price = e.target.price.value
-    let sqfeet = e.target.sqfeet.value
-    let bed = e.target.bed.value
-    let bath = e.target.bath.value
-    let imagelink = e.target.imagelink.value
-    let description = e.target.description.value
+    let listing = this.state.listing
+    let address = e.target.address.value || listing.address
+    let price = e.target.price.value || listing.price
+    let sqfeet = e.target.sqfeet.value || listing.sqfeet
+    let bed = e.target.bed.value || listing.bed
+    let bath = e.target.bath.value || listing.bath
+    let imagelink = e.target.imagelink.value || listing.imagelink
+    let imagelink2 = e.target.imagelink2.value || listing.imagelink2
+    let imagelink3 = e.target.imagelink3.value || listing.imagelink3
+    let description = e.target.description.value || listing.description
     let id = this.props.match.params.id
     let config = {
       method: "PATCH",
@@ -61,6 +66,8 @@ class ListingPage extends React.Component {
         bed: bed,
         bath: bath,
         imagelink: imagelink,
+        imagelink2: imagelink2,
+        imagelink3: imagelink3,
         description: description
       })
     }
@@ -73,6 +80,8 @@ class ListingPage extends React.Component {
         bed: '',
         bath: '',
         imagelink: '',
+        imagelink2: '',
+        imagelink3: '',
         description: ''})
       })
   }
@@ -102,7 +111,9 @@ class ListingPage extends React.Component {
         <p>Price ${this.state.listing ? this.state.listing.price: ''}</p>
         <p>{this.state.listing ? this.state.listing.bed: ''} Bed, {this.state.listing ? this.state.listing.bath: ''} Bath</p>
         <p>{this.state.listing ? this.state.listing.description: ''}</p>
-        {this.state.listing ? <img className="houseimg" src={this.state.listing.imagelink}/> : ''}
+        {this.state.listing ? <img className="houseimg-page" src={this.state.listing.imagelink}/> : ''}
+        {this.state.listing ? <img className="houseimg-page" src={this.state.listing.imagelink2}/> : ''}
+        {this.state.listing ? <img className="houseimg-page" src={this.state.listing.imagelink3}/> : ''}
         <div className="edit">
           <form onSubmit={this.submitHandler}>
             <input className="listing-form-item" placeholder="Address" name="address" type="text" value={this.state.address} onChange={this.changeHandler}/><br/><br/>
@@ -111,6 +122,8 @@ class ListingPage extends React.Component {
             <input className="listing-form-item" placeholder="Bed" name="bed" type="text" value={this.state.bed} onChange={this.changeHandler}/><br/><br/>
             <input className="listing-form-item" placeholder="Bath" name="bath" type="text" value={this.state.bath} onChange={this.changeHandler}/><br/><br/>
             <input className="listing-form-item" placeholder="Image Link" name="imagelink" type="text" value={this.state.imagelink} onChange={this.changeHandler}/><br/><br/>
+            <input className="listing-form-item" placeholder="Image Link 2" name="imagelink2" type="text" value={this.state.imagelink2} onChange={this.changeHandler}/><br/><br/>
+            <input className="listing-form-item" placeholder="Image Link 3" name="imagelink3" type="text" value={this.state.imagelink3} onChange={this.changeHandler}/><br/><br/>
             <textarea className="contact-item message-input" placeholder="Description" name="description" type="text" value={this.state.description} onChange={this.changeHandler}></textarea><br/>
             <input className="submit" type="submit" value="Edit Listing"/>
           </form>
