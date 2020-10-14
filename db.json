@@ -7,7 +7,7 @@
       "price": 350000,
       "bed": 3,
       "bath": 2,
-      "imagelink" : "http://mobileimages.lowes.com/product/converted/090489/090489556181.jpg?size=pdhi",
+      "imagelink": "http://mobileimages.lowes.com/product/converted/090489/090489556181.jpg?size=pdhi",
       "description": "This is a medium example house with picket fence. Very awesome"
     },
     {
@@ -17,18 +17,18 @@
       "price": 400000,
       "bed": 4,
       "bath": 2,
-      "imagelink" : "https://i.insider.com/5e00cf21e94e8625110f5574?width=1800&format=jpeg&auto=webp",
+      "imagelink": "https://i.insider.com/5e00cf21e94e8625110f5574?width=1800&format=jpeg&auto=webp",
       "description": "This is a bigger house. Also known as a castle"
     },
     {
       "id": 3,
-      "address": "20 Jefferson St. New York, NY",
-      "sqfeet": 1700,
-      "price": 250000,
-      "bed": 3,
-      "bath": 1,
-      "imagelink" : "https://linkedin.com",
-      "description": "This is a small house"
+      "address": "1495 Ritz Way Melvilevford, NY",
+      "sqfeet": "all of them",
+      "price": 650000,
+      "bed": 6,
+      "bath": 2,
+      "imagelink": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
+      "description": "The biggest little mcmansion you've ever seen."
     },
     {
       "id": 4,
@@ -37,7 +37,7 @@
       "price": 150000,
       "bed": 2,
       "bath": 1,
-      "imagelink" : "https://linkedin.com",
+      "imagelink": "https://linkedin.com",
       "description": "This is a small house"
     },
     {
@@ -47,7 +47,7 @@
       "price": 250000,
       "bed": 3,
       "bath": 1,
-      "imagelink" : "https://linkedin.com",
+      "imagelink": "https://linkedin.com",
       "description": "This is a small house"
     },
     {
@@ -57,8 +57,28 @@
       "price": 150000,
       "bed": 2,
       "bath": 1,
-      "imagelink" : "https://linkedin.com",
+      "imagelink": "https://linkedin.com",
       "description": "This is a small house"
+    },
+    {
+      "address": "Test address 2",
+      "sqfeet": "5909",
+      "price": "800000",
+      "bed": "6",
+      "bath": "4",
+      "imagelink": "",
+      "description": "Weee",
+      "id": 7
+    },
+    {
+      "address": "4",
+      "sqfeet": "4",
+      "price": "4",
+      "bed": "4",
+      "bath": "4",
+      "imagelink": "",
+      "description": "4",
+      "id": 8
     }
   ]
 }
