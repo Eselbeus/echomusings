@@ -15,7 +15,6 @@ class Contact extends React.Component {
 
   changeHandler = (e) => {
     this.setState({[e.target.name]: e.target.value})
-    console.log(e.target.value)
   }
 
   submitHandler = (e) => {
@@ -37,7 +36,7 @@ class Contact extends React.Component {
         message: message
       })
     }).then(res => res.json())
-    .then(res => {console.log(res, "console")})
+    .then(res => {})
   }
 
   render(){

@@ -36,7 +36,6 @@ class ListingPage extends React.Component {
 
   changeHandler = (e) => {
     this.setState({[e.target.name]: e.target.value})
-    console.log(e.target.value)
   }
 
   submitHandler = (e) => {
@@ -49,7 +48,6 @@ class ListingPage extends React.Component {
     let imagelink = e.target.imagelink.value
     let description = e.target.description.value
     let id = this.props.match.params.id
-    console.log(id)
     let config = {
       method: "PATCH",
       headers: {

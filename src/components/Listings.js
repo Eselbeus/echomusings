@@ -23,7 +23,6 @@ class Listings extends React.Component {
 
   changeHandler = (e) => {
     this.setState({[e.target.name]: e.target.value})
-    console.log(e.target.value)
   }
 
   submitHandler = (e) => {
@@ -35,6 +34,7 @@ class Listings extends React.Component {
     let bath = e.target.bath.value
     let imagelink = e.target.imagelink.value
     let description = e.target.description.value
+
     let config = {
       method: "POST",
       headers: {
@@ -52,9 +52,22 @@ class Listings extends React.Component {
       })
     }
 
-    fetch(`http://localhost:3000/listings`, config)
-      .then(res => res.json())
-      .then(res => {this.setState({listings: [...this.state.listings, res]})})
+    if (address.length < 1){
+      alert("Address cannot be blank")
+    }
+    else {
+      fetch(`http://localhost:3000/listings`, config)
+        .then(res => res.json())
+        .then(res => {this.setState({listings: [...this.state.listings, res], address: '',
+          sqfeet: '',
+          price: '' ,
+          bed: '',
+          bath: '',
+          imagelink: '',
+          description: ''})
+        })
+
+    }
   }
 
   render(){
