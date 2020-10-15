@@ -18,8 +18,8 @@ ReactDOM.render(
     <Route exact path='/about' component={About} />
     <Route exact path='/contact' component={Contact} />
     <Route exact path='/listings' component={Listings} />
-    <Route exact path='/testimonials' component={Testimonials} />
     <Route exact path='/listings/:id' component={ListingPage} />
+    <Route exact path='/testimonials' component={Testimonials} />
     <Route exact path='/' component={App} />
   </Router>,
   document.getElementById('root')

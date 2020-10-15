@@ -86,3 +86,40 @@
 .nav-elem:hover {
   color: #444444;
 }
+
+.nav-mobile {
+  display: flex;
+  flex-direction: column;
+  background: #DDDDDD;
+  padding: 1rem;
+}
+
+@media (max-width: 1130px) {
+  .nav {
+    display: none;
+  }
+  .nav-bar {
+    right: 0px;
+    top: 0rem;
+  }
+  .nav-bar {
+    right: 15%;
+    top: 1.6rem;
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 1130px) {
+  .hamburger {
+    display: none;
+  }
+  .hamburgerDropDown {
+    display: none;
+  }
+  .hamburgerDiv {
+    display: none;
+  }
+  .nav-bar > div {
+    display: none;
+  }
+}

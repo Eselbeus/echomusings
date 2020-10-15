@@ -25,7 +25,7 @@ class ListingPage extends React.Component {
       this.setState({listings: listings})
         let listing_id = this.props.match.params.id
         listing_id = parseInt(listing_id)
-        let listingInfo = 'test';
+        let listingInfo;
         if (this.state.listings !== undefined){
           listingInfo = this.state.listings.find((listing) => {
             return listing.id === listing_id
@@ -33,7 +33,6 @@ class ListingPage extends React.Component {
         }
         this.setState({listing: listingInfo})}
     )
-
   }
 
   changeHandler = (e) => {

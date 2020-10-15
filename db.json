@@ -95,6 +95,18 @@
       "imagelink3": "",
       "description": "",
       "id": 8
+    },
+    {
+      "address": "133 Newbrook Lane",
+      "sqfeet": "1200",
+      "price": "120000",
+      "bed": "1",
+      "bath": "1",
+      "imagelink": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/32835918_2024314687830087_5909418285358645248_o.jpg?_nc_cat=106&_nc_sid=0debeb&_nc_ohc=_H3NwkzwzHQAX-fpbLW&_nc_ht=scontent-lga3-1.xx&oh=5efba632f719f856537b8c2cda42da75&oe=5FAD96B8",
+      "imagelink2": "",
+      "imagelink3": "",
+      "description": "It's where I live",
+      "id": 9
     }
   ]
 }
