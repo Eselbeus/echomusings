@@ -47,6 +47,26 @@ class Admin extends React.Component {
     .then(res => {})
   }
 
+  loginHandler = (e) => {
+    e.preventDefault()
+    let email = e.target.email.value
+    let password = e.target.password.value
+    this.setState({sent: !this.state.sent})
+
+    fetch(`http://localhost:3000/users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    }).then(res => res.json())
+    .then(res => {})
+  }
+
   render(){
     return(
       <span className="admin-page">
@@ -72,7 +92,7 @@ class Admin extends React.Component {
           <div className="signin-form">
             <br/>
             { !this.state.sent ?
-              <form onSubmit={this.submitHandler}>
+              <form onSubmit={this.loginHandler}>
                 <input className="contact-item" placeholder="Email" name="email" type="text" value={this.state.email} onChange={this.changeHandler}/><br/><br/>
                 <input className="contact-item" placeholder="Password" name="password" type="password" value={this.state.password} onChange={this.changeHandler}/><br/><br/>
                 <input className="submit" type="submit" value="Sign in"/>
