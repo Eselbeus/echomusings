@@ -1,18 +1,17 @@
 import React from 'react';
 import './App.css';
-// this is a test to see if setting url origin worked
 
 function App() {
   return (
     <div className="App">
-      <h1>Great Realtor - Real Estate</h1>
+      <h1>New Blog Site</h1>
       <br/>
       <p>Insert Awesome Professional Pic Here</p>
       <br/>
       <br/>
       <br/>
       <br/>
-      <p>Looking to buy or sell. Contact us today!</p>
+      <p>Here's what site is about!</p>
       <br/>
       <br/>
       <br/>

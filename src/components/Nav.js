@@ -37,8 +37,8 @@ class Nav extends React.Component {
     return (
       <nav className='hamburgerDropDown nav-mobile'>
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/">HOME</NavLink>
-        <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/listings">LISTINGS</NavLink>
-        <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/testimonials">TESTIMONIALS</NavLink>
+        <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/articles">BLOG</NavLink>
+        <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/interviews">INTERVIEWS</NavLink>
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/about">ABOUT</NavLink>
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/contact">GET IN TOUCH</NavLink>
       </nav>
@@ -50,8 +50,8 @@ class Nav extends React.Component {
       <div className="nav-bar">
         <nav className="nav">
           <NavLink className="nav-elem" to="/">HOME</NavLink>
-          <NavLink className="nav-elem" to="/listings">LISTINGS</NavLink>
-          <NavLink className="nav-elem" to="/testimonials">TESTIMONIALS</NavLink>
+          <NavLink className="nav-elem" to="/articles">BLOG</NavLink>
+          <NavLink className="nav-elem" to="/interviews">INTERVIEWS</NavLink>
           <NavLink className="nav-elem" to="/about">ABOUT</NavLink>
           <NavLink className="nav-elem" to="/contact">CONTACT</NavLink>
         </nav>

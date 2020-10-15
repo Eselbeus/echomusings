@@ -20,13 +20,13 @@
   font-family: Helvetica,Arial,sans-serif;
 }
 
-.listings {
+.articles {
   text-align: center;
   background: #EEEEFF;
   font-family: Helvetica,Arial,sans-serif;
 }
 
-.listing-container {
+.article-container {
   display: grid;
   grid-template-columns: 400px 400px;
   grid-auto-rows: 400px;
@@ -34,7 +34,7 @@
   margin: 10%;
 }
 
-.listing {
+.article {
   box-shadow: 1px 1px #DDDDEE;
   box-shadow: -1px -1px #DDDDEE;
   width: 400px;
@@ -43,16 +43,16 @@
   padding: 1rem;
 }
 
-.listing:hover {
+.article:hover {
   background: #CCCCDD;
 }
 
-.listing-page {
+.article-page {
   text-align: center;
   margin: 1rem;
 }
 
-.testimonials {
+.interviews {
   text-align: center;
   background: #EEEEFF;
   font-family: Helvetica,Arial,sans-serif;
@@ -74,12 +74,12 @@
   letter-spacing: 0.05em;
 }
 
-.houseimg {
-  width: 100px;
+.articleimg {
+  width: 400px;
 }
 
 .houseimg-page {
-  width: 400px;
+  width: 350px;
   padding: 4px;
 }
 

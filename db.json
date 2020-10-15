@@ -1,111 +1,84 @@
 {
-  "listings": [
+  "articles": [
     {
       "id": 1,
-      "address": "12 Jefferson St. New York, NY",
-      "sqfeet": "2100",
-      "price": 350000,
-      "bed": 3,
-      "bath": 2,
-      "imagelink": "http://mobileimages.lowes.com/product/converted/090489/090489556181.jpg?size=pdhi",
-      "imagelink2": "http://mobileimages.lowes.com/product/converted/090489/090489556181.jpg?size=pdhi",
-      "imagelink3": "http://mobileimages.lowes.com/product/converted/090489/090489556181.jpg?size=pdhi",
-      "description": "This is a medium example house with picket fence. Very awesome"
+      "title": "Dynamic Routes With React",
+      "imagelink": "https://miro.medium.com/max/700/1*Z8-cPadjPAU1ozOTlFlPaA.png",
+      "imagelink2": "https://miro.medium.com/max/700/1*2uBAqa5C3vWFBdXs2bhyyw.png",
+      "imagelink3": "https://miro.medium.com/max/700/1*2uBAqa5C3vWFBdXs2bhyyw.png",
+      "content": "Recently I have been finding myself building larger websites that require some full-stack functionality. Rather than displaying a list of items inside a single route, I was needing to create routes for each item.\nSetting up dynamic routes is actually pretty simple. Assuming you have a react app started and router installed, it is pretty simple. Suppose I have a container of articles and I have a headline listed for each one inside the container. I want to be able to click on one of those headlines and go to the page for that article.\nSet up the router like this. You will notice that for our ArticlePage component we have a route that is set up like /articles/:id’ where id will be the id the article we have clicked on.\n\nFrom here, you can load the correct component and have as many routes as you want!",
+      "contentpt2": "On the container page we need to import Link.\nimport { Link } from ‘react-router-dom’\nI am importing a bunch of article components that are displayed. These don’t show all of the article information, just enough to build interest and when any part of the component is clicked, it will redirect to the page for that article.\n<Link to={`/articles/${article.id}`} style={{ textDecoration: ‘none’, color: “inherit” }}><Article article={article} key={article.id} /></Link>\nNote, that adding a style attribute is purely cosmetic, but it might be easier on your eyes.\nBy wrapping my component with Link, I have now made this whole component into a link to its article page.\nThen, inside my ArticlePage component, in the componentDidMount function, after making a fetch request to get my articles, I use the match prop to find my article so I can render it. In case you are feeling lost at this step, know that the match prop comes with every route so this is normal.\nThe critical line is here:\nlet article_id = this.props.match.params.id"
     },
     {
       "id": 2,
-      "address": "1 Prairie Ln London, NJ",
-      "sqfeet": 2300,
-      "price": 400000,
-      "bed": 4,
-      "bath": 2,
-      "imagelink": "https://i.insider.com/5e00cf21e94e8625110f5574?width=1800&format=jpeg&auto=webp",
-      "imagelink2": "https://i.insider.com/5e00cf21e94e8625110f5574?width=1800&format=jpeg&auto=webp",
-      "imagelink3": "https://i.insider.com/5e00cf21e94e8625110f5574?width=1800&format=jpeg&auto=webp",
-      "description": "This is a bigger house. Also known as a castle"
+      "title": "What Programming Language Should You Start With?",
+      "imagelink": "https://miro.medium.com/max/700/1*34l_K2ZwUemapPJe2M1BMQ.png",
+      "imagelink2": "https://miro.medium.com/max/357/1*oXD6H5ZXkl7L1fmeys1m5Q.png",
+      "imagelink3": "https://miro.medium.com/max/357/1*tkfJxPnXhlq3WVaqsADRpQ.png",
+      "content": "There are many opinions on the internet on this subject and I thought I should perhaps contribute my own. This will of course be a biased article based on my current levels of knowledge so consider this just one more article in your research of how to become a programmer. I am also going to post some stats from Indeed.com so you can think about what skills employers are hiring for.\nI’m going to take a look at some popular languages: Java, Ruby, Javascript, Python and PHP as well as three special languages: SQL, Bash and HTML.\nJava\nImage for post\nfrom indeed.com\nOne look on Indeed.com shows you why you should learn Java. Over 50,000 job results is quite convincing! It was actually the first language I learned. Do I recommend it for a beginner? I do not. While it got me interested in programming and made me excited to write code, it is a complex language with many strict syntax conventions. It is a strongly typed language, which means your variables will always be bound to a specific data type. This is amazing for an experienced developer, but a headache for a newbie since there is a lot to learn. Also, you will find that many of the top bootcamps do not teach Java. This was ultimately a reason I chose to switch to learning a different language early in my career. Since then, I have dabbled in some projects with Java and in one particularly gutsy moment, I even fired up a Spring server. There is a lot to learn if you want to be able to use Java as a backend language.\nJavascript\nImage for post\nfrom indeed.com\nLike Java, there is a huge demand for Javascript developers. And yes, if you are new here, they are two completely different languages! For anyone who is looking into being a web developer, this language is actually essential. Most coding bootcamps for web development focus on Javascript and in fact some of them only focus on Javascript. This was a big reason I switched over to learning Javascript once I decided that I enjoyed programming and I knew that I wanted to enroll in a bootcamp school. If your goal is to be a web developer, there probably isn’t a way of getting around learning Javascript and you will need to learn it at some point in your training. Modern frontend frameworks such as React, Vue and Angular are very popular and they all rely on Javascript. Javascript as a backend language is also enjoying some popularity. For this reason, it is possible to just learn Javascript as a primary language and be a web developer. If you are looking to learn Javascript with the intent of being a web developer, I recommend looking up bootcamp prep courses from top school. I, myself, completed the online prep courses from Fullstack Academy and Flatiron School before enrolling in a bootcamp. Many of these courses are free or cheap so they are worth looking into if you are a beginner.\nRuby\nImage for post\nfrom indeed.com\nThe next language I learned, and maybe one you should learn, is Ruby. The beauty of Ruby is in its syntax. It is easy to learn and flexible. Where Ruby shines is with Rails, a very powerful backend framework. For these reasons, it is also a popular language for coding bootcamps to teach. If you take a quick look at the job postings, you will see that the demand is considerably lower. This is why some of these programs have some criticism. The critics may have a point, but if you are able to eventually learn Ruby on Rails, you will have a good understanding of web development that you can translate to other backend frameworks.\nPython\nImage for post\nfrom indeed.com\nWith over 60,000 job results on Indeed.com, Python wins in terms of demand (on Indeed anyway). I recently learned Python and I can say that I have enjoyed it very much so far. It is relatively easy to learn so like Ruby and Javascript it could be a good job for a beginner to learn. The practical application of Python is broad. You can learn a web framework such as Flask or Django and some web development bootcamps are now teaching Python as a backend. Depending one what school suits you, you may prefer Python over Ruby. Also, there is a relatively new type of bootcamp school that has been getting more popular: Data Science. Those wanting to be a data scientist should definitely learn some basic Python first (and ideally some statistics/linear algebra!). This could be a viable alternative to being a web developer for those looking to switch careers.\nPHP\nImage for post\nfrom indeed.com\nPHP has barely over 8,000 job results. Yikes! For a language that once dominated the web, I would steer against this one. That being said, if no one else is doing it, maybe it’s worth giving a try! I have learned some basic PHP myself and what I can tell you is that it is syntactically similar to Bash, so you might find that crossover easy. I don’t know any major bootcamps that teach this, but there are some good inexpensive PHP courses out there if you are looking to learn. Just don’t bet thousands of dollars of your future on it.\nSpecial Languages: HTML/CSS, Bash and SQL\nThese languages I am including separately because they fall into the category of being both essential, and/or situational. If you want to specifically know if you enjoy programming, start with one of the five languages I mentioned above. Depending on where you are with your coding journey, these languages will be worth looking at.\nHTML/CSS\nImage for post\nfrom indeed.com\nIf you want to build a web page and are curious how to do it, try learning some HTML and build a website. If you want to make it look decent, add some CSS to it. It is still fundamental to know how the web works. If you are learning Javascript or are planning on learning Javascript, you will need to know HTML and CSS and it’s never too early to begin. Just keep in mind, since these languages are more about style and layout and less about logic, this will not give you an idea if you enjoy programming or not.\nSQL\nImage for post\nfrom indeed.com\nIf you are planning on being a backend developer or full stack developer, SQL is an essential language. There is a lot of noise on the internet making SQL look important and it is, but I wouldn’t start here as a beginner. It is specifically used once you start adding databases to your projects. Unless you have a database, there is no need to learn it. Some backend frameworks such as Rails, do a lot of the heavy lifting for SQL and you do not need to have an in-depth knowledge of it right away as long as you know the fundamentals. That being said, it is a very useful language to know, especially if you are traversing your database.\nBash\nBash is an essential language, once you start building projects and installing libraries into your codebase. You might not need to know this one right away, but if you are any kind of programmer, you will need to learn the very basics if you want to do development on your machine. Add this to your knowledge base early as you are ready to develop outside of a learning environment.\nIn Closing\nIf you are looking to be a web developer, I would start off with learning Javascript. If you are looking to be a data scientist and have zero interest in being a web developer, I would start off with Python. Certain essential languages such as HTML, SQL and Bash you should learn as you need them, or with HTML, as soon as you want to build a website. If you are looking to build your own website, it is as simple as finding a host and a domain name service such as Namecheap.com. Add programming to your skillset as soon as you want to, and know that much of the knowledge you acquire from one language will be transferable to others!\nBuy domain name - Cheap domain names from $1.37 - Namecheap\nCOM only $8.88 .NET only $10.78 Discover the latest domain deals and check our pricing on hundreds of TLDs. Boost your…\nnamecheap.pxf.io\nDisclosure: This article contains affiliate links and I receive a commission if you visit a link and buy something on my recommendation. Purchasing a product via an affiliate link will not cost you any extra, and I only recommend products and services I trust.",
+      "contentpt2": " "
     },
     {
       "id": 3,
-      "address": "1495 Ritz Way Melvilevford, NY",
-      "sqfeet": "all of them",
-      "price": 650000,
-      "bed": 6,
-      "bath": 2,
-      "imagelink": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
-      "imagelink2": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
-      "imagelink3": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
-      "description": "The biggest little mcmansion you've ever seen."
+      "title": "Python — The Cool Parts: List Comprehension",
+      "imagelink": "https://miro.medium.com/max/683/1*zp1GzulaPtOLoEiuEC19Kg.png",
+      "imagelink2": "https://miro.medium.com/max/683/1*OlP0ho0glMA54t_FKpepoA.png",
+      "imagelink3": "https://miro.medium.com/max/684/1*kC3VYZBRYR-W2jLddZWG2g.png",
+      "content": "One of the cool parts of Python is the ability to make a new list from writing logic around an existing list. Consider a list/array that has the numbers from 1–6.\nlistA = [1,2,3,4,5,6]\nIn Place of Map\nSuppose you wanted to have a new list containing each number squared. In most languages this would require using a map method or something similar. You expect to see something like this:\nlet listWithElementsSquared = listA.map((x) => {return x**2})\nWith Python however, this can be done inside a new list:",
+      "contentpt2": "You write a for loop inside the new list, looping over each element. Then prior to the for loop, you describe what you want done to each element.\nIn Place of Filter\nList comprehensions can also be used to filter out items in a list:"
     },
     {
       "id": 4,
-      "address": "24 Jefferson St. New York, NY",
-      "sqfeet": 1200,
-      "price": 150000,
-      "bed": 2,
-      "bath": 1,
-      "imagelink": "https://linkedin.com",
-      "imagelink2": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
-      "imagelink3": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
-      "description": "This is a small house"
+      "title": "Deploying a Flask API to Heroku",
+      "imagelink": "https://miro.medium.com/max/700/0*S3SLBRxNHJS_BxVf.jpeg",
+      "imagelink2": "https://miro.medium.com/max/291/1*6M6mTk1vv9Dl4fNgfkI6yA.png",
+      "imagelink3": "https://miro.medium.com/max/700/1*3k21zRONB7K1W0eIwpkkug.png",
+      "content": "In my previous article, I wrote about how to build an API with Flask. This article is about how to deploy it to Heroku, or more specifically, what steps you need to take to prepare your app to be deployed. If you have built your app correctly, it will need some modifications before you can deploy it.",
+      "contentpt2": "My preferred way of deploying apps is by connecting a Github repository to a service like Heroku or Netlify. It is so easy to deploy your production-ready branch once it is up there. All you need is an account. While it is very easy to connect, it won’t deploy properly if you simply connect it because Heroku needs things to be in a specific format.\nImportant Steps Before You Deploy\nWe need a web server, so install Gunicorn:\npip install gunicorn\nIn your project in terminal if you type in: pip freeze, you will get a convenient list of your dependencies. What we actually want to do is to save these into a requirements.txt file so type in the command:\npip freeze > requirements.txt\nOnce we have this file, which Heroku uses, we can delete our Pipfile and Pipfile.lock. I know that sounds horrible and scary! Feel free to do this on a new git branch or simply move them into a new empty folder somewhere if it gives you peace of mind. This is crucial because your app will not deploy correctly if this Pipfile is in your folder.\nNow that Gunicorn is installed, we also need to make a Procfile. Create the file (named Procfile with no extension) at the base level of your project and then add the line:\nweb: gunicorn app:app\nMake sure you add, commit and push your changes."
     },
     {
       "id": 5,
-      "address": "20 Jefferson St. New York, NY",
-      "sqfeet": 1700,
-      "price": 250000,
-      "bed": 3,
-      "bath": 1,
+      "title": "20 Jefferson St. New York, NY",
       "imagelink": "https://linkedin.com",
       "imagelink2": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
       "imagelink3": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
-      "description": "This is a small house"
+      "content": "This is a small house",
+      "contentpt2": "This is a medium example house with picket fence. Very awesome"
     },
     {
       "id": 6,
-      "address": "24 Jefferson St. New York, NY",
-      "sqfeet": 1200,
-      "price": 150000,
-      "bed": 2,
-      "bath": 1,
+      "title": "24 Jefferson St. New York, NY",
       "imagelink": "https://linkedin.com",
       "imagelink2": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
       "imagelink3": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
-      "description": "This is a small house"
+      "content": "This is a small house",
+      "contentpt2": "This is a medium example house with picket fence. Very awesome"
     },
     {
-      "address": "Test address 2",
-      "sqfeet": "5909",
-      "price": "800000",
-      "bed": "6",
-      "bath": "4",
+      "title": "Test title 2",
       "imagelink": "",
       "imagelink2": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
       "imagelink3": "https://64.media.tumblr.com/08cb04580deb58c2ac2dc03782050cb5/5c5a96c418f912c1-2e/s1280x1920/9a79aff91230939cd9413c73a8225b42ef381e3f.png",
-      "description": "Weee",
+      "content": "Weee",
+      "contentpt2": "This is a medium example house with picket fence. Very awesome",
       "id": 7
     },
     {
-      "address": "5",
-      "sqfeet": "800",
-      "price": "4",
-      "bed": "4",
-      "bath": "2",
+      "title": "5",
       "imagelink": "",
       "imagelink2": "",
       "imagelink3": "",
-      "description": "",
+      "content": "",
+      "contentpt2": "This is a medium example house with picket fence. Very awesome",
       "id": 8
     },
     {
-      "address": "133 Newbrook Lane",
-      "sqfeet": "1200",
-      "price": "120000",
-      "bed": "1",
-      "bath": "1",
+      "title": "133 Newbrook Lane",
       "imagelink": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/32835918_2024314687830087_5909418285358645248_o.jpg?_nc_cat=106&_nc_sid=0debeb&_nc_ohc=_H3NwkzwzHQAX-fpbLW&_nc_ht=scontent-lga3-1.xx&oh=5efba632f719f856537b8c2cda42da75&oe=5FAD96B8",
       "imagelink2": "",
       "imagelink3": "",
-      "description": "It's where I live",
+      "content": "It's where I live",
+      "contentpt2": "This is a medium example house with picket fence. Very awesome",
       "id": 9
     }
   ]

@@ -13,7 +13,7 @@ class About extends React.Component {
         <br/>
         <br/>
         <br/>
-        <p>Put mission statement about how we care about clients here.</p>
+        <p>Put something important here.</p>
         <br/>
         <br/>
         <br/>
