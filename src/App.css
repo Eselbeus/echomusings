@@ -123,3 +123,11 @@
     display: none;
   }
 }
+
+.admin-page {
+  text-align: center;
+}
+
+.admin-forms {
+  padding: 1rem;
+}

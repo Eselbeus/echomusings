@@ -11,11 +11,13 @@ import Listings from './components/Listings'
 import Listing from './components/Listings'
 import ListingPage from './components/ListingPage'
 import Testimonials from './components/Testimonials'
+import Admin from './components/Admin'
 
 ReactDOM.render(
   <Router>
     <Nav />
     <Route exact path='/about' component={About} />
+    <Route exact path='/admin' component={Admin} />
     <Route exact path='/contact' component={Contact} />
     <Route exact path='/listings' component={Listings} />
     <Route exact path='/listings/:id' component={ListingPage} />
