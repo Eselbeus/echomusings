@@ -11,7 +11,8 @@ class Articles extends React.Component {
     imagelink2: '',
     imagelink3: '',
     content: '',
-    contentp2: ''
+    contentpt2: '',
+    contentpt3: ''
   }
 
   componentDidMount(){
@@ -32,6 +33,7 @@ class Articles extends React.Component {
     let imagelink3 = e.target.imagelink3.value
     let content = e.target.content.value
     let contentpt2 = e.target.contentpt2.value
+    let contentpt3 = e.target.contentpt3.value
 
     let config = {
       method: "POST",
@@ -45,7 +47,8 @@ class Articles extends React.Component {
         imagelink2: imagelink2,
         imagelink3: imagelink3,
         content: content,
-        contentpt2: contentpt2
+        contentpt2: contentpt2,
+        contentpt3: contentpt3
       })
     }
 
@@ -60,7 +63,8 @@ class Articles extends React.Component {
           imagelink2: '',
           imagelink3: '',
           content: '',
-          contentp2: ''})
+          contentpt2: '',
+          contentpt3: ''})
         })
 
     }
@@ -84,6 +88,7 @@ class Articles extends React.Component {
           <input className="article-form-item" placeholder="Image Link 2" name="imagelink2" type="text" value={this.state.imagelink2} onChange={this.changeHandler}/><br/><br/>
           <textarea className="contact-item message-input" placeholder="Content Pt. 2" name="contentpt2" type="text" value={this.state.contentpt2} onChange={this.changeHandler}></textarea><br/>
           <input className="article-form-item" placeholder="Image Link 3" name="imagelink3" type="text" value={this.state.imagelink3} onChange={this.changeHandler}/><br/><br/>
+          <textarea className="contact-item message-input" placeholder="Content Pt. 3" name="contentpt3" type="text" value={this.state.contentpt3} onChange={this.changeHandler}></textarea><br/>
           <input className="submit" type="submit" value="Create New Article"/>
         </form>
         <div className="article-container">{articleComponents}</div>

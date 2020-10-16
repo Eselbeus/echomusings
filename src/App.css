@@ -50,6 +50,14 @@
 .article-page {
   text-align: center;
   margin: 1rem;
+  font-family: "Georgia"
+}
+
+.article-content {
+  text-align: left;
+  margin-left: 15%;
+  margin-right: 15%;
+  font-family: "Georgia"
 }
 
 .interviews {
@@ -78,7 +86,7 @@
   width: 400px;
 }
 
-.houseimg-page {
+.articleimg-page {
   width: 350px;
   padding: 4px;
 }

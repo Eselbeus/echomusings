@@ -12,6 +12,7 @@ class ArticlePage extends React.Component {
     imagelink3: '',
     content: '',
     contentpt2: '',
+    contentpt3: '',
     delete: false
   }
 
@@ -45,6 +46,7 @@ class ArticlePage extends React.Component {
     let imagelink3 = e.target.imagelink3.value || article.imagelink3
     let content = e.target.content.value || article.content
     let contentpt2 = e.target.contentpt2.value || article.contentpt2
+    let contentpt3 = e.target.contentpt3.value || article.contentpt3
     let id = this.props.match.params.id
     let config = {
       method: "PATCH",
@@ -58,7 +60,8 @@ class ArticlePage extends React.Component {
         imagelink2: imagelink2,
         imagelink3: imagelink3,
         content: content,
-        contentpt2: contentpt2
+        contentpt2: contentpt2,
+        contentpt3: contentpt3,
       })
     }
 
@@ -69,7 +72,8 @@ class ArticlePage extends React.Component {
         imagelink2: '',
         imagelink3: '',
         content: '',
-        contentpt2: '',})
+        contentpt2: '',
+        contentpt3: '',})
       })
   }
 
@@ -94,11 +98,12 @@ class ArticlePage extends React.Component {
     return (
       <div className="article-page">
         <h2>{this.state.article ? this.state.article.title: ''}</h2>
-        {this.state.article ? <img className="houseimg-page" src={this.state.article.imagelink}/> : ''}
-        <p>{this.state.article ? this.state.article.content: ''}</p>
-        {this.state.article ? <img className="houseimg-page" src={this.state.article.imagelink2}/> : ''}
-        <p>{this.state.article ? this.state.article.contentpt2: ''}</p>
-        {this.state.article ? <img className="houseimg-page" src={this.state.article.imagelink3}/> : ''}
+        {this.state.article ? <img className="articleimg-page" src={this.state.article.imagelink}/> : ''}
+        <p className='article-content'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.article ? this.state.article.content: ''}</p>
+        {this.state.article ? <img className="articleimg-page" src={this.state.article.imagelink2}/> : ''}
+        <p className='article-content'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.article ? this.state.article.contentpt2: ''}</p>
+        {this.state.article ? <img className="articleimg-page" src={this.state.article.imagelink3}/> : ''}
+        <p className='article-content'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.article ? this.state.article.contentpt3: ''}</p>
         <div className="edit">
           <form onSubmit={this.submitHandler}>
             <input className="article-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
@@ -107,6 +112,7 @@ class ArticlePage extends React.Component {
             <input className="article-form-item" placeholder="Image Link 2" name="imagelink2" type="text" value={this.state.imagelink2} onChange={this.changeHandler}/><br/><br/>
             <textarea className="contact-item message-input" placeholder="Content Pt. 2" name="contentpt2" type="text" value={this.state.contentpt2} onChange={this.changeHandler}></textarea><br/>
             <input className="article-form-item" placeholder="Image Link 3" name="imagelink3" type="text" value={this.state.imagelink3} onChange={this.changeHandler}/><br/><br/>
+            <textarea className="contact-item message-input" placeholder="Content Pt. 3" name="contentpt3" type="text" value={this.state.contentpt3} onChange={this.changeHandler}></textarea><br/>
             <input className="submit" type="submit" value="Edit Article"/>
           </form>
         </div>

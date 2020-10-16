@@ -6,7 +6,7 @@
       "imagelink": "https://miro.medium.com/max/700/1*Z8-cPadjPAU1ozOTlFlPaA.png",
       "imagelink2": "https://miro.medium.com/max/700/1*2uBAqa5C3vWFBdXs2bhyyw.png",
       "imagelink3": "https://miro.medium.com/max/700/1*2uBAqa5C3vWFBdXs2bhyyw.png",
-      "content": "Recently I have been finding myself building larger websites that require some full-stack functionality. Rather than displaying a list of items inside a single route, I was needing to create routes for each item.\nSetting up dynamic routes is actually pretty simple. Assuming you have a react app started and router installed, it is pretty simple. Suppose I have a container of articles and I have a headline listed for each one inside the container. I want to be able to click on one of those headlines and go to the page for that article.\nSet up the router like this. You will notice that for our ArticlePage component we have a route that is set up like /articles/:id’ where id will be the id the article we have clicked on.\n\nFrom here, you can load the correct component and have as many routes as you want!",
+      "content": "Recently I have been finding myself building larger websites that require some full-stack functionality. Rather than displaying a list of items inside a single route, I was needing to create routes for each item. Setting up dynamic routes is actually pretty simple. Assuming you have a react app started and router installed, it is pretty simple. Suppose I have a container of articles and I have a headline listed for each one inside the container. I want to be able to click on one of those headlines and go to the page for that article. Set up the router like this. You will notice that for our ArticlePage component we have a route that is set up like /articles/:id’ where id will be the id the article we have clicked on. \nFrom here, you can load the correct component and have as many routes as you want!",
       "contentpt2": "On the container page we need to import Link.\nimport { Link } from ‘react-router-dom’\nI am importing a bunch of article components that are displayed. These don’t show all of the article information, just enough to build interest and when any part of the component is clicked, it will redirect to the page for that article.\n<Link to={`/articles/${article.id}`} style={{ textDecoration: ‘none’, color: “inherit” }}><Article article={article} key={article.id} /></Link>\nNote, that adding a style attribute is purely cosmetic, but it might be easier on your eyes.\nBy wrapping my component with Link, I have now made this whole component into a link to its article page.\nThen, inside my ArticlePage component, in the componentDidMount function, after making a fetch request to get my articles, I use the match prop to find my article so I can render it. In case you are feeling lost at this step, know that the match prop comes with every route so this is normal.\nThe critical line is here:\nlet article_id = this.props.match.params.id"
     },
     {
@@ -68,18 +68,28 @@
       "imagelink": "",
       "imagelink2": "",
       "imagelink3": "",
-      "content": "",
-      "contentpt2": "This is a medium example house with picket fence. Very awesome",
-      "id": 8
+      "content": "kjgjg",
+      "contentpt2": "kjhgjg",
+      "id": 8,
+      "contentpt3": "asdfdsfsd"
     },
     {
-      "title": "133 Newbrook Lane",
+      "title": "Whoooo",
       "imagelink": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/32835918_2024314687830087_5909418285358645248_o.jpg?_nc_cat=106&_nc_sid=0debeb&_nc_ohc=_H3NwkzwzHQAX-fpbLW&_nc_ht=scontent-lga3-1.xx&oh=5efba632f719f856537b8c2cda42da75&oe=5FAD96B8",
       "imagelink2": "",
       "imagelink3": "",
       "content": "It's where I live",
       "contentpt2": "This is a medium example house with picket fence. Very awesome",
       "id": 9
+    },
+    {
+      "title": "First Korean Male Skater to Medal at a Prestigious ISU Event",
+      "imagelink": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/48164581_10155796080130785_2907180852045676544_o.jpg?_nc_cat=106&_nc_sid=730e14&_nc_ohc=l_Wvdv5t7DQAX-jjIjv&_nc_ht=scontent-lga3-1.xx&oh=3508abf27334e16c7e1448ef66683165&oe=5FB13C65",
+      "imagelink2": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/48249831_10155796079950785_2931191767929716736_o.jpg?_nc_cat=111&_nc_sid=730e14&_nc_ohc=XFkx0C5d8cMAX9Uq2kq&_nc_ht=scontent-lga3-1.xx&oh=5915c60c4b8f7c3134070daa52b85191&oe=5FAFFBE4",
+      "imagelink3": "",
+      "content": "It has been 9 years since a Korean skater has medaled at a Grand Prix Figure Skating Final, and it\nwas Kim Yuna who had won gold. This year, Junhwan Cha medals at the 2018 Grand Prix Figure Skating,\nbecoming not only another Korean figure skater to win a medal at the event, but the first Korean male\nskater to do so. Cha already made history by becoming the first Korean male to reach this event and the\nonly other Korean skater since Kim. He had a clean short program, nailing all of his jumps, including a\nquad salchow, and placed 4th. This put him in a good position to medal coming into the free skate.\nThough he made a mistake on his first jump, the quad toe loop in the free skate, he landed the rest of\nhis jumps, which received positive grades of execution. Some of the key, important jumps he had\nlanded was the quad salchow and triple lutz-triple loop combination. He was competing against other\nmen who were older and veteran skaters, but much of his clean jumps and his artistry earned him a\nseason’s best of 174.42 in the free skate and a total score of 263.49 to win 3rd behind Nathan Chen of\nthe US, the winner, and Shoma Uno of Japan, who placed 2nd\n. ",
+      "contentpt2": "Chen and Uno were the favorites to win coming into the event and are known to perform multiple quad\njumps in their free skate. Yuzuru Hanyu of Japan, who was also another favorite to win, had decided not\nto enter the competition due to an ankle injury. This left the door open for other skaters to reach the\npodium, which Cha had successfully done. ",
+      "id": 10
     }
   ]
 }
