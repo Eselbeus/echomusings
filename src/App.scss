@@ -1,29 +1,32 @@
+$mainBackgroundColor: #EEEEFF;
+$articleFont: "Georgia", "Times New Roman";
+
 #root {
-  background: #EEEEFF;
+  background: $mainBackgroundColor;
 }
 
 .App {
   text-align: center;
-  background: #EEEEFF;
-  font-family: Helvetica,Arial,sans-serif;
+  background: $mainBackgroundColor;
+  font-family: $articleFont;
 }
 
 .contact {
   text-align: center;
-  background: #EEEEFF;
-  font-family: Helvetica,Arial,sans-serif;
+  background: $mainBackgroundColor;
+  font-family: $articleFont;
 }
 
 .about {
   text-align: center;
-  background: #EEEEFF;
-  font-family: Helvetica,Arial,sans-serif;
+  background: $mainBackgroundColor;
+  font-family: $articleFont;
 }
 
 .articles {
   text-align: center;
-  background: #EEEEFF;
-  font-family: Helvetica,Arial,sans-serif;
+  background: $mainBackgroundColor;
+  font-family: $articleFont;
 }
 
 .article-container {
@@ -50,20 +53,20 @@
 .article-page {
   text-align: center;
   margin: 1rem;
-  font-family: "Georgia"
+  font-family: $articleFont;
 }
 
 .article-content {
   text-align: left;
   margin-left: 15%;
   margin-right: 15%;
-  font-family: "Georgia"
+  font-family: $articleFont;
 }
 
 .interviews {
   text-align: center;
-  background: #EEEEFF;
-  font-family: Helvetica,Arial,sans-serif;
+  background: $mainBackgroundColor;
+  font-family: $articleFont;
 }
 
 .nav {

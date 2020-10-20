@@ -1,4 +1,5 @@
 import React from 'react'
+import '../App.scss';
 
 class Admin extends React.Component {
   state = {
@@ -13,6 +14,55 @@ class Admin extends React.Component {
 
   signup = (e) => {
     this.setState({signup: !this.state.signup})
+  }
+
+  getCurrentUser = (user) => {
+  let token = localStorage.getItem('token')
+  fetch(`http://localhost:3000/api/v1/users`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        name: user.name,
+        email: user.email,
+        password: user.password,
+        key: user.key
+      })
+    })
+    .then(res => res.json())
+    .then(res => {
+
+      localStorage.setItem('token', res.jwt)
+      })
+  }
+
+
+getUser = (user) => {
+
+  fetch(`http://localhost:3000/api/v1/signup/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      Authorization: localStorage.getItem('token')},
+    body: JSON.stringify({
+      username: user.username,
+      password: user.password
+    })
+  })
+  .then(res => res.json())
+  .then(res => {
+    console.log(res)
+    localStorage.setItem('token', res.jwt)
+    })
+}
+
+  logoutUser = ({}) => {
+    localStorage.clear()
+
   }
 
   signin = (e) => {

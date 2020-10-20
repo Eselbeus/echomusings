@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Article from './Article'
-import '../App.css';
+import '../App.scss';
 
 class Articles extends React.Component {
   state = {
@@ -71,6 +71,7 @@ class Articles extends React.Component {
   }
 
   render(){
+    let token = localStorage.getItem('token')
     let articles = this.state.articles;
     let articleComponents;
     if (articles !== undefined){
@@ -81,6 +82,7 @@ class Articles extends React.Component {
     return (
       <div className="articles">
         <h1>Articles</h1>
+        {!!token ? <p>Logged in</p> : ''}
         <form onSubmit={this.submitHandler}>
           <input className="article-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
           <input className="article-form-item" placeholder="Image Link" name="imagelink" type="text" value={this.state.imagelink} onChange={this.changeHandler}/><br/><br/>

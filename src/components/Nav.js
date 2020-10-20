@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Link, NavLink, Router } from 'react-router-dom'
 import HamburgerMenu from 'react-hamburger-menu';
-import '../App.css';
+import '../App.scss';
 
 class Nav extends React.Component {
   state = {
