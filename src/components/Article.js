@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import '../App.scss';
 
 class Article extends React.Component {
@@ -7,7 +6,7 @@ class Article extends React.Component {
     return (
       <div className="article">
         <h1>{this.props.article.title}</h1>
-        <img className="articleimg" src={this.props.article.imagelink}/>
+        <img className="articleimg" alt='' src={this.props.article.imagelink}/>
       </div>
     )
   }

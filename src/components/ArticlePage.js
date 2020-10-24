@@ -99,11 +99,11 @@ class ArticlePage extends React.Component {
     return (
       <div className="article-page">
         <h2>{this.state.article ? this.state.article.title: ''}</h2>
-        {this.state.article ? <img className="articleimg-page" src={this.state.article.imagelink}/> : ''}
+        {this.state.article ? <img className="articleimg-page" alt='' src={this.state.article.imagelink}/> : ''}
         <p className='article-content'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.article ? this.state.article.content: ''}</p>
-        {this.state.article ? <img className="articleimg-page" src={this.state.article.imagelink2}/> : ''}
+        {this.state.article ? <img className="articleimg-page" alt='' src={this.state.article.imagelink2}/> : ''}
         <p className='article-content'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.article ? this.state.article.contentpt2: ''}</p>
-        {this.state.article ? <img className="articleimg-page" src={this.state.article.imagelink3}/> : ''}
+        {this.state.article ? <img className="articleimg-page" alt='' src={this.state.article.imagelink3}/> : ''}
         <p className='article-content'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.article ? this.state.article.contentpt3: ''}</p>
         <div className="edit">
           {!!token ?

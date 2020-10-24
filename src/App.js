@@ -6,7 +6,6 @@ import Home from './components/Home'
 import About from './components/About'
 import Contact from './components/Contact'
 import Articles from './components/Articles'
-import Article from './components/Article'
 import ArticlePage from './components/ArticlePage'
 import Interviews from './components/Interviews'
 import Admin from './components/Admin'
@@ -93,7 +92,7 @@ class App extends React.Component {
       })
   }
 
-    logoutUser = ({}) => {
+    logoutUser = () => {
       localStorage.clear()
       this.setState({user: {}})
     }
@@ -116,4 +115,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);

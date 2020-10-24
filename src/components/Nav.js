@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Link, NavLink, Router } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import HamburgerMenu from 'react-hamburger-menu';
 import '../App.scss';
 
