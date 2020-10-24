@@ -6,7 +6,8 @@ import '../App.scss';
 class Nav extends React.Component {
   state = {
     open: false,
-    hideOrShowHambugerDropDown: 'hamburgerDropDown'
+    hideOrShowHambugerDropDown: 'hamburgerDropDown',
+    user: {}
   }
 
   handleClick = () => {
@@ -33,7 +34,12 @@ class Nav extends React.Component {
     )
   }
 
+  // logoutUser = () => {
+  //   localStorage.clear()
+  // }
+
   mobileNav = () => {
+    let token = localStorage.getItem('token')
     return (
       <nav className='hamburgerDropDown nav-mobile'>
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/">HOME</NavLink>
@@ -41,11 +47,16 @@ class Nav extends React.Component {
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/interviews">INTERVIEWS</NavLink>
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/about">ABOUT</NavLink>
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/contact">GET IN TOUCH</NavLink>
+        {!!token && this.props.currentUser.user ? <p className="nav-elem">Logged in as {this.props.currentUser.user.name}</p> : ''}
+        {!!token ? <button className="nav-elem" onClick={this.props.logoutUser}>Logout</button> : ''}
+
       </nav>
     )
   }
 
   render(){
+    let token = localStorage.getItem('token')
+
     return (
       <div className="nav-bar">
         <nav className="nav">
@@ -54,6 +65,8 @@ class Nav extends React.Component {
           <NavLink className="nav-elem" to="/interviews">INTERVIEWS</NavLink>
           <NavLink className="nav-elem" to="/about">ABOUT</NavLink>
           <NavLink className="nav-elem" to="/contact">CONTACT</NavLink>
+          {!!token && this.props.currentUser.user ? <p className="nav-elem">Logged in as {this.props.currentUser.user.name}</p> : ''}
+          {!!token ? <button className="nav-elem" onClick={this.props.logoutUser}>Logout</button> : ''}
         </nav>
         { this.state.open ?  this.mobileNav() : this.displayHamburgerMenu()}
       </div>

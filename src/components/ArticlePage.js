@@ -17,7 +17,7 @@ class ArticlePage extends React.Component {
   }
 
   componentDidMount(){
-    fetch(`http://localhost:3000/articles`)
+    fetch(`http://localhost:3000/api/v1/articles`)
       .then(res => res.json())
       .then(articles => {
       this.setState({articles: articles})
@@ -94,6 +94,7 @@ class ArticlePage extends React.Component {
   }
 
   render(){
+    let token = localStorage.getItem('token')
 
     return (
       <div className="article-page">
@@ -105,6 +106,7 @@ class ArticlePage extends React.Component {
         {this.state.article ? <img className="articleimg-page" src={this.state.article.imagelink3}/> : ''}
         <p className='article-content'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.article ? this.state.article.contentpt3: ''}</p>
         <div className="edit">
+          {!!token ?
           <form onSubmit={this.submitHandler}>
             <input className="article-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
             <input className="article-form-item" placeholder="Image Link" name="imagelink" type="text" value={this.state.imagelink} onChange={this.changeHandler}/><br/><br/>
@@ -115,11 +117,14 @@ class ArticlePage extends React.Component {
             <textarea className="contact-item message-input" placeholder="Content Pt. 3" name="contentpt3" type="text" value={this.state.contentpt3} onChange={this.changeHandler}></textarea><br/>
             <input className="submit" type="submit" value="Edit Article"/>
           </form>
+          : ''}
         </div>
         <br/>
+        {!!token ?
         <div className="delete" onClick={this.deleteConfirm}>
           <button>Delete Article</button>
         </div>
+        : ''}
         {this.state.delete ? <div className="delete" onClick={this.deleteHandler}>
           <Link to={`/articles`} style={{ textDecoration: 'none', color: "inherit" }}><button>Confirm Delete?</button></Link>
         </div>: ''}

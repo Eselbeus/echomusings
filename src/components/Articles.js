@@ -16,7 +16,7 @@ class Articles extends React.Component {
   }
 
   componentDidMount(){
-    fetch(`http://localhost:3000/articles`)
+    fetch(`http://localhost:3000/api/v1/articles`)
       .then(res => res.json())
       .then(articles => this.setState({articles: articles}))
   }
@@ -82,7 +82,7 @@ class Articles extends React.Component {
     return (
       <div className="articles">
         <h1>Articles</h1>
-        {!!token ? <p>Logged in</p> : ''}
+        {!!token ?
         <form onSubmit={this.submitHandler}>
           <input className="article-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
           <input className="article-form-item" placeholder="Image Link" name="imagelink" type="text" value={this.state.imagelink} onChange={this.changeHandler}/><br/><br/>
@@ -93,6 +93,7 @@ class Articles extends React.Component {
           <textarea className="contact-item message-input" placeholder="Content Pt. 3" name="contentpt3" type="text" value={this.state.contentpt3} onChange={this.changeHandler}></textarea><br/>
           <input className="submit" type="submit" value="Create New Article"/>
         </form>
+        : ''}
         <div className="article-container">{articleComponents}</div>
       </div>
     )

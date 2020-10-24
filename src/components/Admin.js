@@ -9,60 +9,12 @@ class Admin extends React.Component {
     key: '',
     sent: false,
     signup: false,
-    signin: false
+    signin: false,
+    user: {}
   }
 
   signup = (e) => {
     this.setState({signup: !this.state.signup})
-  }
-
-  getCurrentUser = (user) => {
-  let token = localStorage.getItem('token')
-  fetch(`http://localhost:3000/api/v1/users`, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify({
-        name: user.name,
-        email: user.email,
-        password: user.password,
-        key: user.key
-      })
-    })
-    .then(res => res.json())
-    .then(res => {
-
-      localStorage.setItem('token', res.jwt)
-      })
-  }
-
-
-getUser = (user) => {
-
-  fetch(`http://localhost:3000/api/v1/signup/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json",
-      Authorization: localStorage.getItem('token')},
-    body: JSON.stringify({
-      username: user.username,
-      password: user.password
-    })
-  })
-  .then(res => res.json())
-  .then(res => {
-    console.log(res)
-    localStorage.setItem('token', res.jwt)
-    })
-}
-
-  logoutUser = ({}) => {
-    localStorage.clear()
-
   }
 
   signin = (e) => {
@@ -73,50 +25,6 @@ getUser = (user) => {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  submitHandler = (e) => {
-    e.preventDefault()
-    let name = e.target.name.value
-    let email = e.target.email.value
-    let password = e.target.password.value
-    let key = e.target.key.value
-    this.setState({sent: !this.state.sent})
-
-    fetch(`http://localhost:3000/users`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password,
-        key: key
-      })
-    }).then(res => res.json())
-    .then(res => {})
-  }
-
-  loginHandler = (e) => {
-    e.preventDefault()
-    let email = e.target.email.value
-    let password = e.target.password.value
-    this.setState({sent: !this.state.sent})
-
-    fetch(`http://localhost:3000/users`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password
-      })
-    }).then(res => res.json())
-    .then(res => {})
-  }
-
   render(){
     return(
       <span className="admin-page">
@@ -125,7 +33,7 @@ getUser = (user) => {
           <div className="signup-form">
             <br/>
             { !this.state.sent ?
-              <form onSubmit={this.submitHandler}>
+              <form onSubmit={this.props.signupHandler}>
                 <input className="contact-item" placeholder="Name" name="name" type="text" value={this.state.name} onChange={this.changeHandler}/><br/><br/>
                 <input className="contact-item" placeholder="Email" name="email" type="text" value={this.state.email} onChange={this.changeHandler}/><br/><br/>
                 <input className="contact-item" placeholder="Password" name="password" type="text" value={this.state.password} onChange={this.changeHandler}/><br/><br/>
@@ -142,12 +50,12 @@ getUser = (user) => {
           <div className="signin-form">
             <br/>
             { !this.state.sent ?
-              <form onSubmit={this.loginHandler}>
+              <form onSubmit={this.props.loginHandler}>
                 <input className="contact-item" placeholder="Email" name="email" type="text" value={this.state.email} onChange={this.changeHandler}/><br/><br/>
                 <input className="contact-item" placeholder="Password" name="password" type="password" value={this.state.password} onChange={this.changeHandler}/><br/><br/>
                 <input className="submit" type="submit" value="Sign in"/>
               </form>
-               : <h2>Logging in!</h2>
+               : <h2>Logging in!{!!this.state.user ? <p>Hi {this.state.user.name}</p>:''}</h2>
             }
             </div>
           }
