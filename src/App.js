@@ -105,7 +105,7 @@ class App extends React.Component {
           <Route exact path='/about' component={About} />
           <Route path="/admin" render={() => <Admin loginHandler={this.loginHandler} signupHandler={this.signupHandler}/>}/>
           <Route exact path='/contact' component={Contact} />
-          <Route exact path='/articles' component={Articles} />
+          <Route exact path="/articles" render={() => <Articles currentUser={this.state.user}/>}/>
           <Route exact path='/articles/:id' component={ArticlePage} />
           <Route path="/podcast" render={() => <Podcasts currentUser={this.state.user}/>}/>
           <Route exact path='/' user={this.state.user} component={Home} />

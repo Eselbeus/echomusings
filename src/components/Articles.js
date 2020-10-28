@@ -34,6 +34,7 @@ class Articles extends React.Component {
     let content = e.target.content.value
     let contentpt2 = e.target.contentpt2.value
     let contentpt3 = e.target.contentpt3.value
+    let user_id = this.props.currentUser.user.id
 
     let config = {
       method: "POST",
@@ -48,7 +49,8 @@ class Articles extends React.Component {
         imagelink3: imagelink3,
         content: content,
         contentpt2: contentpt2,
-        contentpt3: contentpt3
+        contentpt3: contentpt3,
+        user_id: user_id
       })
     }
 
