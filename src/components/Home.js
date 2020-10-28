@@ -4,7 +4,7 @@ import '../App.scss';
 function Home() {
   return (
     <div className="App">
-      <h1>New Blog Site</h1>
+      <h1>Lutz Watch</h1>
       <br/>
       <p>Insert Awesome Professional Pic Here</p>
       <br/>

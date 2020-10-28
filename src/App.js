@@ -7,7 +7,7 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Articles from './components/Articles'
 import ArticlePage from './components/ArticlePage'
-import Interviews from './components/Interviews'
+import Podcasts from './components/Podcasts'
 import Admin from './components/Admin'
 
 class App extends React.Component {
@@ -107,7 +107,7 @@ class App extends React.Component {
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/articles' component={Articles} />
           <Route exact path='/articles/:id' component={ArticlePage} />
-          <Route exact path='/interviews' component={Interviews} />
+          <Route path="/podcast" render={() => <Podcasts currentUser={this.state.user}/>}/>
           <Route exact path='/' user={this.state.user} component={Home} />
         </Switch>
       </div>

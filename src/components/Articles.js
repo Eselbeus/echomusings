@@ -56,7 +56,7 @@ class Articles extends React.Component {
       alert("Title cannot be blank")
     }
     else {
-      fetch(`http://localhost:3000/articles`, config)
+      fetch(`http://localhost:3000/api/v1/articles`, config)
         .then(res => res.json())
         .then(res => {this.setState({articles: [...this.state.articles, res], title: '',
           imagelink: '',

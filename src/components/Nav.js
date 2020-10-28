@@ -44,7 +44,7 @@ class Nav extends React.Component {
       <nav className='hamburgerDropDown nav-mobile'>
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/">HOME</NavLink>
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/articles">BLOG</NavLink>
-        <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/interviews">INTERVIEWS</NavLink>
+        <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/podcast">PODCAST</NavLink>
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/about">ABOUT</NavLink>
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/contact">GET IN TOUCH</NavLink>
         {!!token && this.props.currentUser.user ? <p className="nav-elem">Logged in as {this.props.currentUser.user.name}</p> : ''}
@@ -62,7 +62,7 @@ class Nav extends React.Component {
         <nav className="nav">
           <NavLink className="nav-elem" to="/">HOME</NavLink>
           <NavLink className="nav-elem" to="/articles">BLOG</NavLink>
-          <NavLink className="nav-elem" to="/interviews">INTERVIEWS</NavLink>
+          <NavLink className="nav-elem" to="/podcast">PODCAST</NavLink>
           <NavLink className="nav-elem" to="/about">ABOUT</NavLink>
           <NavLink className="nav-elem" to="/contact">CONTACT</NavLink>
           {!!token && this.props.currentUser.user ? <p className="nav-elem">Logged in as {this.props.currentUser.user.name}</p> : ''}
