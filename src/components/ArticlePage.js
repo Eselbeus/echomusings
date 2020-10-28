@@ -1,6 +1,7 @@
 import React from 'react'
 import '../App.scss';
 import { Link } from 'react-router-dom'
+import { Route, Switch, withRouter } from "react-router-dom";
 
 class ArticlePage extends React.Component {
   state = {
@@ -55,17 +56,18 @@ class ArticlePage extends React.Component {
         "Accept": "application/json"
       },
       body: JSON.stringify({
+        id: id,
         title: title,
         imagelink: imagelink,
         imagelink2: imagelink2,
         imagelink3: imagelink3,
         content: content,
         contentpt2: contentpt2,
-        contentpt3: contentpt3,
+        contentpt3: contentpt3
       })
     }
 
-    fetch(`http://localhost:3000/articles/${id}`, config)
+    fetch(`http://localhost:3000/api/v1/articles/${id}`, config)
       .then(res => res.json())
       .then(res => {this.setState({article: res, title: '',
         imagelink: '',
@@ -133,4 +135,4 @@ class ArticlePage extends React.Component {
   }
 }
 
-export default ArticlePage;
+export default withRouter(ArticlePage);

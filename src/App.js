@@ -106,7 +106,7 @@ class App extends React.Component {
           <Route path="/admin" render={() => <Admin loginHandler={this.loginHandler} signupHandler={this.signupHandler}/>}/>
           <Route exact path='/contact' component={Contact} />
           <Route exact path="/articles" render={() => <Articles currentUser={this.state.user}/>}/>
-          <Route exact path='/articles/:id' component={ArticlePage} />
+          <Route exact path="/articles/:id" render={props => <ArticlePage currentUser={this.state.user}/>}/>
           <Route path="/podcast" render={() => <Podcasts currentUser={this.state.user}/>}/>
           <Route exact path='/' user={this.state.user} component={Home} />
         </Switch>
