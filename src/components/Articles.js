@@ -77,7 +77,7 @@ class Articles extends React.Component {
     let articles = this.state.articles;
     let articleComponents;
     if (articles !== undefined){
-      articleComponents = articles.map(article => {
+      articleComponents = articles.sort((a,b) => {return b.id - a.id}).map(article => {
         return <Link to={`/articles/${article.id}`} style={{ textDecoration: 'none', color: "inherit" }} key={article.id}><Article article={article} key={article.id} /></Link>
       })
     }

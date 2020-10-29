@@ -49,6 +49,7 @@ class ArticlePage extends React.Component {
     let contentpt2 = e.target.contentpt2.value || article.contentpt2
     let contentpt3 = e.target.contentpt3.value || article.contentpt3
     let id = this.props.match.params.id
+
     let config = {
       method: "PATCH",
       headers: {
@@ -56,7 +57,6 @@ class ArticlePage extends React.Component {
         "Accept": "application/json"
       },
       body: JSON.stringify({
-        id: id,
         title: title,
         imagelink: imagelink,
         imagelink2: imagelink2,
@@ -81,7 +81,7 @@ class ArticlePage extends React.Component {
 
   deleteHandler = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:3000/articles/${this.state.article.id}`, {
+    fetch(`http://localhost:3000/api/v1/articles/${this.state.article.id}`, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json',
