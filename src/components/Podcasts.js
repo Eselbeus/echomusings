@@ -37,7 +37,6 @@ class Podcasts extends React.Component {
         user_id: user_id
       })
     }
-    debugger
 
     if (title.length < 1){
       alert("Title cannot be blank")

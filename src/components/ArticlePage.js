@@ -1,7 +1,6 @@
 import React from 'react'
 import '../App.scss';
-import { Link } from 'react-router-dom'
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Link, withRouter } from 'react-router-dom'
 
 class ArticlePage extends React.Component {
   state = {
@@ -75,7 +74,7 @@ class ArticlePage extends React.Component {
         imagelink3: '',
         content: '',
         contentpt2: '',
-        contentpt3: '',})
+        contentpt3: ''})
       })
   }
 
