@@ -12,7 +12,9 @@ import Admin from './components/Admin'
 
 class App extends React.Component {
   state = {
-    user: {}
+    user: {},
+    articles: [],
+
   }
 
   componentDidMount = () => {
@@ -31,7 +33,56 @@ class App extends React.Component {
               console.log(user);
             })
           })
-      };
+    };
+    fetch(`http://localhost:3000/api/v1/articles`)
+      .then(res => res.json())
+      .then(articles => this.setState({articles: articles}))
+  }
+
+  submitHandler = (e) => {
+    e.preventDefault()
+    let title = e.target.title.value
+    let imagelink = e.target.imagelink.value
+    let imagelink2 = e.target.imagelink2.value
+    let imagelink3 = e.target.imagelink3.value
+    let content = e.target.content.value
+    let contentpt2 = e.target.contentpt2.value
+    let contentpt3 = e.target.contentpt3.value
+    let user_id = this.state.user.user.id
+
+    let config = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        title: title,
+        imagelink: imagelink,
+        imagelink2: imagelink2,
+        imagelink3: imagelink3,
+        content: content,
+        contentpt2: contentpt2,
+        contentpt3: contentpt3,
+        user_id: user_id
+      })
+    }
+
+    if (title.length < 1){
+      alert("Title cannot be blank")
+    }
+    else {
+      fetch(`http://localhost:3000/api/v1/articles`, config)
+        .then(res => res.json())
+        .then(res => {this.setState({articles: [...this.state.articles, res], title: '',
+          imagelink: '',
+          imagelink2: '',
+          imagelink3: '',
+          content: '',
+          contentpt2: '',
+          contentpt3: ''})
+        })
+    }
   }
 
   signupHandler = (e) => {
@@ -105,10 +156,10 @@ class App extends React.Component {
           <Route exact path='/about' component={About} />
           <Route path="/admin" render={() => <Admin loginHandler={this.loginHandler} signupHandler={this.signupHandler}/>}/>
           <Route exact path='/contact' component={Contact} />
-          <Route exact path="/articles" render={() => <Articles currentUser={this.state.user}/>}/>
+          <Route exact path="/articles" render={() => <Articles currentUser={this.state.user} articles={this.state.articles} submitHandler={this.submitHandler}/>}/>
           <Route exact path="/articles/:id" render={props => <ArticlePage currentUser={this.state.user}/>}/>
           <Route path="/podcast" render={() => <Podcasts currentUser={this.state.user}/>}/>
-          <Route exact path='/' user={this.state.user} component={Home} />
+          <Route exact path='/' render={() => <Home articles={this.state.articles}/>}/>
         </Switch>
       </div>
     );

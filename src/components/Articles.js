@@ -15,66 +15,13 @@ class Articles extends React.Component {
     contentpt3: ''
   }
 
-  componentDidMount(){
-    fetch(`http://localhost:3000/api/v1/articles`)
-      .then(res => res.json())
-      .then(articles => this.setState({articles: articles}))
-  }
-
   changeHandler = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  submitHandler = (e) => {
-    e.preventDefault()
-    let title = e.target.title.value
-    let imagelink = e.target.imagelink.value
-    let imagelink2 = e.target.imagelink2.value
-    let imagelink3 = e.target.imagelink3.value
-    let content = e.target.content.value
-    let contentpt2 = e.target.contentpt2.value
-    let contentpt3 = e.target.contentpt3.value
-    let user_id = this.props.currentUser.user.id
-
-    let config = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        title: title,
-        imagelink: imagelink,
-        imagelink2: imagelink2,
-        imagelink3: imagelink3,
-        content: content,
-        contentpt2: contentpt2,
-        contentpt3: contentpt3,
-        user_id: user_id
-      })
-    }
-
-    if (title.length < 1){
-      alert("Title cannot be blank")
-    }
-    else {
-      fetch(`http://localhost:3000/api/v1/articles`, config)
-        .then(res => res.json())
-        .then(res => {this.setState({articles: [...this.state.articles, res], title: '',
-          imagelink: '',
-          imagelink2: '',
-          imagelink3: '',
-          content: '',
-          contentpt2: '',
-          contentpt3: ''})
-        })
-
-    }
-  }
-
   render(){
     let token = localStorage.getItem('token')
-    let articles = this.state.articles;
+    let articles = this.props.articles;
     let articleComponents;
     if (articles !== undefined){
       articleComponents = articles.sort((a,b) => {return b.id - a.id}).map(article => {
@@ -85,7 +32,7 @@ class Articles extends React.Component {
       <div className="articles">
         <h1>Articles</h1>
         {!!token ?
-        <form onSubmit={this.submitHandler}>
+        <form onSubmit={this.props.submitHandler}>
           <input className="article-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
           <input className="article-form-item" placeholder="Image Link" name="imagelink" type="text" value={this.state.imagelink} onChange={this.changeHandler}/><br/><br/>
           <textarea className="contact-item message-input" placeholder="Content" name="content" type="text" value={this.state.content} onChange={this.changeHandler}></textarea><br/>
