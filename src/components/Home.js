@@ -19,11 +19,9 @@ class Home extends React.Component {
 
     return (
       <div className="App">
-        <h1>Lutz Watch</h1>
+        <h1>Echo Musings</h1>
         <br/>
         <p>Insert Awesome Professional Pic Here</p>
-        <br/>
-        <br/>
         <br/>
         <br/>
         <p>Here's what site is about!</p>
