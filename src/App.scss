@@ -135,6 +135,14 @@ $articleFont: "Georgia", "Times New Roman";
   }
 }
 
+.iframePlayer {
+  font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;
+}
+
+.linkIframe {
+  color: #cccccc; text-decoration: none;
+}
+
 .admin-page {
   text-align: center;
 }

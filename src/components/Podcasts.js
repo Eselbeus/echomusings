@@ -6,7 +6,8 @@ class Podcasts extends React.Component {
   state = {
     podcasts: [],
     title: '',
-    subtitle: ''
+    subtitle: '',
+    url: ''
   }
 
   componentDidMount(){
@@ -23,6 +24,13 @@ class Podcasts extends React.Component {
     e.preventDefault()
     let title = e.target.title.value
     let subtitle = e.target.subtitle.value
+    let url = e.target.url.value
+    console.log('test')
+    debugger
+    let urlArr = url.split("tracks/")
+    let nextPart = urlArr[1].split("&color")
+    url = nextPart[0]
+    console.log(url, "url")
     let user_id = this.props.currentUser.user.id
 
     let config = {
@@ -34,6 +42,7 @@ class Podcasts extends React.Component {
       body: JSON.stringify({
         title: title,
         subtitle: subtitle,
+        url: url,
         user_id: user_id
       })
     }
@@ -45,7 +54,7 @@ class Podcasts extends React.Component {
       fetch(`http://localhost:3000/api/v1/podcasts`, config)
         .then(res => res.json())
         .then(res => {this.setState({podcasts: [...this.state.podcasts, res], title: '',
-          subtitle: ''})
+          subtitle: '', url: ''})
         })
 
     }
@@ -62,13 +71,17 @@ class Podcasts extends React.Component {
     }
     return (
       <div className="podcasts">
-        <h1>Podcast</h1>
-        <p>So and so decided to do an interview with us. It's awesome.</p>
-        <form onSubmit={this.submitHandler}>
-          <input className="article-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
-          <input className="article-form-item" placeholder="Subtitle" name="subtitle" type="text" value={this.state.subtitle} onChange={this.changeHandler}/><br/><br/>
-          <input className="submit" type="submit" value="Create New Podcast"/>
-        </form>
+        {!!token ?
+        <div>
+          <h1>Podcast</h1>
+          <p>So and so decided to do an interview with us. It's awesome.</p>
+          <form onSubmit={this.submitHandler}>
+            <input className="article-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
+            <input className="article-form-item" placeholder="Subtitle" name="subtitle" type="text" value={this.state.subtitle} onChange={this.changeHandler}/><br/><br/>
+            <input className="article-form-item" placeholder="Url" name="url" type="text" value={this.state.url} onChange={this.changeHandler}/><br/><br/>
+            <input className="submit" type="submit" value="Create New Podcast"/>
+          </form>
+        </div> : ''}
         <div className="podcast-container">{podcastComponents}</div>
       </div>
     )

@@ -5,6 +5,7 @@ class Podcast extends React.Component {
   state = {
     title: '',
     subtitle: '',
+    url: '',
     editButton: true,
     contentpt3: '',
     delete: false,
@@ -31,6 +32,7 @@ class Podcast extends React.Component {
     let article = this.state.article
     let title = e.target.title.value || this.props.podcast.title
     let subtitle = e.target.subtitle.value || this.props.podcast.subtitle
+    let url = e.target.url.value || this.props.podcast.url
     let id = this.props.podcast.id
 
     let config = {
@@ -41,7 +43,8 @@ class Podcast extends React.Component {
       },
       body: JSON.stringify({
         title: title,
-        subtitle: subtitle
+        subtitle: subtitle,
+        url: url
       })
     }
 
@@ -65,29 +68,38 @@ class Podcast extends React.Component {
 
   render(){
     let token = localStorage.getItem('token')
+    let soundcloudUrlId = this.props.podcast.url
+    let soundcloudSource = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${soundcloudUrlId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`
 
     return(
       <div>
         <h2>{this.props.podcast.title}</h2>
         <h4>{this.props.podcast.subtitle}</h4>
-        <div className="edit" onClick={this.editForm}>
-          <button>Edit</button>
+        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src={soundcloudSource}></iframe><div className="iframePlayer"></div>
+
+        {!!token ?
+        <div>
+          <div className="edit" onClick={this.editForm}>
+            <button>Edit</button>
+          </div>
+          <div className="edit">
+            {!!token ?
+            <form onSubmit={this.submitHandler}>
+              <input className="podcast-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
+              <input className="podcast-form-item" placeholder="Subtitle" name="subtitle" type="text" value={this.state.subtitle} onChange={this.changeHandler}/><br/><br/>
+              <input className="podcast-form-item" placeholder="Soundcloud Url" name="Url" type="text" value={this.state.url} onChange={this.changeHandler}/><br/><br/>
+              <input className="submit" type="submit" value="Update Podcast"/>
+            </form>
+            : ''}
+          </div>
+          <div className="delete" onClick={this.deleteConfirm}>
+            <button>Delete</button>
+          </div>
+          {this.state.delete ? <div className="delete" onClick={this.deleteHandler}>
+            <button>Confirm Delete?</button>
+          </div>: ''}
         </div>
-        <div className="edit">
-          {!!token ?
-          <form onSubmit={this.submitHandler}>
-            <input className="podcast-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
-            <input className="podcast-form-item" placeholder="Subtitle" name="subtitle" type="text" value={this.state.subtitle} onChange={this.changeHandler}/><br/><br/>
-            <input className="submit" type="submit" value="Update Podcast"/>
-          </form>
-          : ''}
-        </div>
-        <div className="delete" onClick={this.deleteConfirm}>
-          <button>Delete</button>
-        </div>
-        {this.state.delete ? <div className="delete" onClick={this.deleteHandler}>
-          <button>Confirm Delete?</button>
-        </div>: ''}
+        : ''}
       </div>
     )
   }
