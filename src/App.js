@@ -9,12 +9,13 @@ import Articles from './components/Articles'
 import ArticlePage from './components/ArticlePage'
 import Podcasts from './components/Podcasts'
 import Admin from './components/Admin'
+import Footer from './components/Footer'
 
 class App extends React.Component {
   state = {
     user: {},
     articles: [],
-
+    podcasts: []
   }
 
   componentDidMount = () => {
@@ -37,6 +38,10 @@ class App extends React.Component {
     fetch(`http://localhost:3000/api/v1/articles`)
       .then(res => res.json())
       .then(articles => this.setState({articles: articles}))
+
+      fetch(`http://localhost:3000/api/v1/podcasts`)
+        .then(res => res.json())
+        .then(podcasts => this.setState({podcasts: podcasts}))
   }
 
   submitHandler = (e) => {
@@ -158,9 +163,10 @@ class App extends React.Component {
           <Route exact path='/contact' component={Contact} />
           <Route exact path="/articles" render={() => <Articles currentUser={this.state.user} articles={this.state.articles} submitHandler={this.submitHandler}/>}/>
           <Route exact path="/articles/:id" render={props => <ArticlePage currentUser={this.state.user}/>}/>
-          <Route path="/podcast" render={() => <Podcasts currentUser={this.state.user}/>}/>
-          <Route exact path='/' render={() => <Home articles={this.state.articles}/>}/>
+          <Route path="/podcast" render={() => <Podcasts currentUser={this.state.user} podcasts={this.state.podcasts}/>}/>
+          <Route exact path='/' render={() => <Home articles={this.state.articles} podcasts={this.state.podcasts}/>}/>
         </Switch>
+        <Footer />
       </div>
     );
   }

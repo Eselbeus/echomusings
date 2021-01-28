@@ -6,6 +6,7 @@ class Podcast extends React.Component {
     title: '',
     subtitle: '',
     url: '',
+    description: '',
     editButton: true,
     contentpt3: '',
     delete: false,
@@ -29,10 +30,12 @@ class Podcast extends React.Component {
 
   submitHandler = (e) => {
     e.preventDefault()
-    let article = this.state.article
+    // let article = this.state.article
+    console.log(this.props.podcast, "target and props")
     let title = e.target.title.value || this.props.podcast.title
     let subtitle = e.target.subtitle.value || this.props.podcast.subtitle
     let url = e.target.url.value || this.props.podcast.url
+    let description = e.target.description.value || this.props.description.url
     let id = this.props.podcast.id
 
     let config = {
@@ -44,7 +47,8 @@ class Podcast extends React.Component {
       body: JSON.stringify({
         title: title,
         subtitle: subtitle,
-        url: url
+        url: url,
+        description: description
       })
     }
 
@@ -75,8 +79,14 @@ class Podcast extends React.Component {
       <div>
         <h2>{this.props.podcast.title}</h2>
         <h4>{this.props.podcast.subtitle}</h4>
-        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src={soundcloudSource}></iframe><div className="iframePlayer"></div>
-
+        <section className="podcast-layout">
+          <div className="podcast-enclosure podcast-layout-child">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src={soundcloudSource}></iframe><div className="iframePlayer"></div>
+          </div>
+          <div classname="podcast-description podcast-layout-child">
+            <p>Insert description text here {this.props.podcast.description}</p>
+          </div>
+        </section>
         {!!token ?
         <div>
           <div className="edit" onClick={this.editForm}>
@@ -87,7 +97,8 @@ class Podcast extends React.Component {
             <form onSubmit={this.submitHandler}>
               <input className="podcast-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
               <input className="podcast-form-item" placeholder="Subtitle" name="subtitle" type="text" value={this.state.subtitle} onChange={this.changeHandler}/><br/><br/>
-              <input className="podcast-form-item" placeholder="Soundcloud Url" name="Url" type="text" value={this.state.url} onChange={this.changeHandler}/><br/><br/>
+              <input className="podcast-form-item" placeholder="Soundcloud Url" name="url" type="text" value={this.state.url} onChange={this.changeHandler}/><br/><br/>
+              <input className="podcast-form-item" placeholder="Description" name="description" type="text" value={this.state.description} onChange={this.changeHandler}/><br/><br/>
               <input className="submit" type="submit" value="Update Podcast"/>
             </form>
             : ''}

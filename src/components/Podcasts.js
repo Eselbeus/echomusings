@@ -10,11 +10,11 @@ class Podcasts extends React.Component {
     url: ''
   }
 
-  componentDidMount(){
-    fetch(`http://localhost:3000/api/v1/podcasts`)
-      .then(res => res.json())
-      .then(podcasts => this.setState({podcasts: podcasts}))
-  }
+  // componentDidMount(){
+  //   fetch(`http://localhost:3000/api/v1/podcasts`)
+  //     .then(res => res.json())
+  //     .then(podcasts => this.setState({podcasts: podcasts}))
+  // }
 
   changeHandler = (e) => {
     this.setState({[e.target.name]: e.target.value})
@@ -25,12 +25,12 @@ class Podcasts extends React.Component {
     let title = e.target.title.value
     let subtitle = e.target.subtitle.value
     let url = e.target.url.value
-    console.log('test')
-    debugger
+    // console.log('test')
+    // debugger
     let urlArr = url.split("tracks/")
     let nextPart = urlArr[1].split("&color")
     url = nextPart[0]
-    console.log(url, "url")
+    // console.log(url, "url")
     let user_id = this.props.currentUser.user.id
 
     let config = {
@@ -62,7 +62,7 @@ class Podcasts extends React.Component {
 
   render(){
     let token = localStorage.getItem('token')
-    let podcasts = this.state.podcasts;
+    let podcasts = this.props.podcasts;
     let podcastComponents;
     if (podcasts !== undefined){
       podcastComponents = podcasts.map(podcast => {
@@ -74,11 +74,10 @@ class Podcasts extends React.Component {
         {!!token ?
         <div>
           <h1>Podcast</h1>
-          <p>So and so decided to do an interview with us. It's awesome.</p>
           <form onSubmit={this.submitHandler}>
             <input className="article-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
             <input className="article-form-item" placeholder="Subtitle" name="subtitle" type="text" value={this.state.subtitle} onChange={this.changeHandler}/><br/><br/>
-            <input className="article-form-item" placeholder="Url" name="url" type="text" value={this.state.url} onChange={this.changeHandler}/><br/><br/>
+            <input className="article-form-item" placeholder="Soundcloud Embed Url" name="url" type="text" value={this.state.url} onChange={this.changeHandler}/><br/><br/>
             <input className="submit" type="submit" value="Create New Podcast"/>
           </form>
         </div> : ''}

@@ -1,4 +1,7 @@
 $mainBackgroundColor: #EEEEFF;
+$mainBackgroundColor: #f5efe0;
+$mainBackgroundColor: #fff;
+
 $articleFont: "Georgia", "Times New Roman";
 
 #root {
@@ -9,6 +12,10 @@ $articleFont: "Georgia", "Times New Roman";
   text-align: center;
   background: $mainBackgroundColor;
   font-family: $articleFont;
+}
+
+.Home {
+  text-align: center;
 }
 
 .contact {
@@ -31,23 +38,36 @@ $articleFont: "Georgia", "Times New Roman";
 
 .article-container {
   display: grid;
-  grid-template-columns: 400px 400px;
+  grid-template-columns: 40% 40%;
   grid-auto-rows: 400px;
-  grid-column-gap: 200px;
+  grid-column-gap: 10%;
   margin: 10%;
+  margin-bottom: 30%;
+  margin-top: 5%;
 }
 
 .article {
   box-shadow: 1px 1px #DDDDEE;
   box-shadow: -1px -1px #DDDDEE;
-  width: 400px;
+  width: 100%;
   margin: 1rem;
-  background: #FFFFFF;
+  background: #FFF;
+  background: #CCCCDD;
   padding: 1rem;
+}
+
+.article-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 1.2px;
+  text-shadow: 0px 0px, 1px 0px, 1px 0px;;
 }
 
 .article:hover {
   background: #CCCCDD;
+  background: #ddd;
 }
 
 .article-page {
@@ -70,23 +90,30 @@ $articleFont: "Georgia", "Times New Roman";
 }
 
 .nav {
-  background: #DDDDDD;
+  background: #EEEEEE;
   text-align: center;
   padding: 1rem;
+  border-bottom: solid 1px #333333;
+  // position: fixed;
+  width: 100%;
 }
 
 .nav-elem {
   text-decoration: none;
-  color: #777777;
+  color: #333333;
   padding: 2rem;
-  font-family: Helvetica,Arial,sans-serif;
-  font-size: 18px;
-  font-weight: 700;
+  font-family: 'Montserrat',Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  // font-weight: 700;
   letter-spacing: 0.05em;
 }
 
+a.nav-elem:hover {
+  color: #BB8855;
+}
+
 .articleimg {
-  width: 400px;
+  width: 100%;
 }
 
 .articleimg-page {
@@ -149,4 +176,37 @@ $articleFont: "Georgia", "Times New Roman";
 
 .admin-forms {
   padding: 1rem;
+}
+
+.logo-home {
+  width: 100%;
+}
+
+.podcast-headline {
+  // padding: 1rem;
+  align-items: center;
+
+}
+
+.logo-small {
+  width: 200px;
+}
+
+.podcast-layout {
+  display: flex;
+}
+
+.podcast-layout-child {
+  width: 50%;
+  padding: 1rem;
+}
+
+.podcast-home {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.podcast-mini {
+  width: 50px;
+  height: 50px;
 }
