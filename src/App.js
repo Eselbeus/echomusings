@@ -90,6 +90,43 @@ class App extends React.Component {
     }
   }
 
+  submitHandlerPodcast = (e) => {
+    e.preventDefault()
+    let title = e.target.title.value
+    let subtitle = e.target.subtitle.value
+    let url = e.target.url.value
+    let urlArr = url.split("tracks/")
+    let nextPart = urlArr[1].split("&color")
+    url = nextPart[0]
+    let user_id = this.state.user.user.id
+
+    let config = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        title: title,
+        subtitle: subtitle,
+        url: url,
+        user_id: user_id
+      })
+    }
+
+    if (title.length < 1){
+      alert("Title cannot be blank")
+    }
+    else {
+      fetch(`http://localhost:3000/api/v1/podcasts`, config)
+        .then(res => res.json())
+        .then(res => {this.setState({podcasts: [...this.state.podcasts, res], title: '',
+          subtitle: '', url: ''})
+        })
+
+    }
+  }
+
   signupHandler = (e) => {
     e.preventDefault()
     let token = localStorage.getItem('token')
@@ -163,7 +200,7 @@ class App extends React.Component {
           <Route exact path='/contact' component={Contact} />
           <Route exact path="/articles" render={() => <Articles currentUser={this.state.user} articles={this.state.articles} submitHandler={this.submitHandler}/>}/>
           <Route exact path="/articles/:id" render={props => <ArticlePage currentUser={this.state.user}/>}/>
-          <Route path="/podcast" render={() => <Podcasts currentUser={this.state.user} podcasts={this.state.podcasts}/>}/>
+          <Route path="/podcast" render={() => <Podcasts currentUser={this.state.user} podcasts={this.state.podcasts} submitHandler={this.submitHandlerPodcast}/>}/>
           <Route exact path='/' render={() => <Home articles={this.state.articles} podcasts={this.state.podcasts}/>}/>
         </Switch>
         <Footer />

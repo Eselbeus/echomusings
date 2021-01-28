@@ -30,8 +30,6 @@ class Podcast extends React.Component {
 
   submitHandler = (e) => {
     e.preventDefault()
-    // let article = this.state.article
-    console.log(this.props.podcast, "target and props")
     let title = e.target.title.value || this.props.podcast.title
     let subtitle = e.target.subtitle.value || this.props.podcast.subtitle
     let url = e.target.url.value || this.props.podcast.url
@@ -55,8 +53,8 @@ class Podcast extends React.Component {
     fetch(`http://localhost:3000/api/v1/podcasts/${id}`, config)
       .then(res => res.json())
       .then(res => {this.setState({podcast: res, title: '',
-        subtitle: ''
-        })
+        subtitle: '', description: ''
+      })
       })
   }
 

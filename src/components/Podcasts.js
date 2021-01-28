@@ -14,43 +14,6 @@ class Podcasts extends React.Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  submitHandler = (e) => {
-    e.preventDefault()
-    let title = e.target.title.value
-    let subtitle = e.target.subtitle.value
-    let url = e.target.url.value
-    let urlArr = url.split("tracks/")
-    let nextPart = urlArr[1].split("&color")
-    url = nextPart[0]
-    let user_id = this.props.currentUser.user.id
-
-    let config = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        title: title,
-        subtitle: subtitle,
-        url: url,
-        user_id: user_id
-      })
-    }
-
-    if (title.length < 1){
-      alert("Title cannot be blank")
-    }
-    else {
-      fetch(`http://localhost:3000/api/v1/podcasts`, config)
-        .then(res => res.json())
-        .then(res => {this.setState({podcasts: [...this.state.podcasts, res], title: '',
-          subtitle: '', url: ''})
-        })
-
-    }
-  }
-
   render(){
     let token = localStorage.getItem('token')
     let podcasts = this.props.podcasts;
@@ -65,7 +28,7 @@ class Podcasts extends React.Component {
         {!!token ?
         <div>
           <h1>Podcast</h1>
-          <form onSubmit={this.submitHandler}>
+          <form onSubmit={this.props.submitHandler}>
             <input className="article-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
             <input className="article-form-item" placeholder="Subtitle" name="subtitle" type="text" value={this.state.subtitle} onChange={this.changeHandler}/><br/><br/>
             <input className="article-form-item" placeholder="Soundcloud Embed Url" name="url" type="text" value={this.state.url} onChange={this.changeHandler}/><br/><br/>

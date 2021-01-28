@@ -32,8 +32,6 @@ class Home extends React.Component {
 
     soundcloudSource = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${soundcloudUrlId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`
 
-    console.log("both", this.props.articles, this.props.podcasts)
-    console.log(podcastFirst)
 
     return (
       <div className="Home">
