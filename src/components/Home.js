@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import Article from './Article'
 import logo from '../assets/Echo-Musings_cropped.jpg'
-import fullLogo from '../assets/Echo-Musings.jpg'
 import '../App.scss';
 
 class Home extends React.Component {
