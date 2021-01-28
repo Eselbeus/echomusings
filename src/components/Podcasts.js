@@ -10,12 +10,6 @@ class Podcasts extends React.Component {
     url: ''
   }
 
-  // componentDidMount(){
-  //   fetch(`http://localhost:3000/api/v1/podcasts`)
-  //     .then(res => res.json())
-  //     .then(podcasts => this.setState({podcasts: podcasts}))
-  // }
-
   changeHandler = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
@@ -25,12 +19,9 @@ class Podcasts extends React.Component {
     let title = e.target.title.value
     let subtitle = e.target.subtitle.value
     let url = e.target.url.value
-    // console.log('test')
-    // debugger
     let urlArr = url.split("tracks/")
     let nextPart = urlArr[1].split("&color")
     url = nextPart[0]
-    // console.log(url, "url")
     let user_id = this.props.currentUser.user.id
 
     let config = {
