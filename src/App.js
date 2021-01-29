@@ -31,7 +31,7 @@ class App extends React.Component {
           .then(resp => resp.json())
           .then(user => {
             this.setState({ user }, () => {
-              console.log(user);
+              
             })
           })
     };
@@ -94,37 +94,55 @@ class App extends React.Component {
     e.preventDefault()
     let title = e.target.title.value
     let subtitle = e.target.subtitle.value
+    let description = e.target.description.value
     let url = e.target.url.value
-    let urlArr = url.split("tracks/")
-    let nextPart = urlArr[1].split("&color")
-    url = nextPart[0]
-    let user_id = this.state.user.user.id
+    let embedType;
+    if (url.includes("tracks") || url.includes("playlists")){
+      let urlArr;
+      if (url.includes("tracks")){
+        urlArr = url.split("tracks/")
+        embedType = "tracks"
+      }
+      else if (url.includes("playlists")){
+        urlArr = url.split("playlists/")
+        embedType = "playlists"
+      }
+      let nextPart = urlArr[1].split("&color")
+      url = nextPart[0]
+      let user_id = this.state.user.user.id
 
-    let config = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        title: title,
-        subtitle: subtitle,
-        url: url,
-        user_id: user_id
-      })
-    }
+      let config = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          title: title,
+          subtitle: subtitle,
+          url: url,
+          description: description,
+          embed_type: embedType,
+          user_id: user_id
+        })
+      }
 
-    if (title.length < 1){
-      alert("Title cannot be blank")
+      if (title.length < 1){
+        alert("Title cannot be blank")
+      }
+      else {
+        fetch(`http://localhost:3000/api/v1/podcasts`, config)
+          .then(res => res.json())
+          .then(res => {this.setState({podcasts: [...this.state.podcasts, res], title: '',
+            subtitle: '', url: ''})
+          })
+
+      }
     }
     else {
-      fetch(`http://localhost:3000/api/v1/podcasts`, config)
-        .then(res => res.json())
-        .then(res => {this.setState({podcasts: [...this.state.podcasts, res], title: '',
-          subtitle: '', url: ''})
-        })
-
+      alert("Embed code not valid. Please try again.")
     }
+
   }
 
   signupHandler = (e) => {

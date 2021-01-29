@@ -4,10 +4,10 @@ import '../App.scss';
 
 class Podcasts extends React.Component {
   state = {
-    podcasts: [],
     title: '',
     subtitle: '',
-    url: ''
+    url: '',
+    description: ''
   }
 
   changeHandler = (e) => {
@@ -19,8 +19,8 @@ class Podcasts extends React.Component {
     let podcasts = this.props.podcasts;
     let podcastComponents;
     if (podcasts !== undefined){
-      podcastComponents = podcasts.map(podcast => {
-        return <Podcast podcast={podcast} key={podcast.id} />
+      podcastComponents = podcasts.sort((a,b) => {return b.id - a.id}).map(podcast => {
+        return <Podcast podcast={podcast} key={podcast.id}/>
       })
     }
     return (
@@ -31,7 +31,8 @@ class Podcasts extends React.Component {
           <form onSubmit={this.props.submitHandler}>
             <input className="article-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
             <input className="article-form-item" placeholder="Subtitle" name="subtitle" type="text" value={this.state.subtitle} onChange={this.changeHandler}/><br/><br/>
-            <input className="article-form-item" placeholder="Soundcloud Embed Url" name="url" type="text" value={this.state.url} onChange={this.changeHandler}/><br/><br/>
+            <input className="article-form-item" placeholder="Soundcloud EmbedCode" name="url" type="text" value={this.state.url} onChange={this.changeHandler}/><br/><br/>
+            <input className="article-form-item" placeholder="Description" name="description" type="text" value={this.state.description} onChange={this.changeHandler}/><br/><br/>
             <input className="submit" type="submit" value="Create New Podcast"/>
           </form>
         </div> : ''}

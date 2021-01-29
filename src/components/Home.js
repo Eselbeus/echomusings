@@ -37,7 +37,7 @@ class Home extends React.Component {
         <img className="logo-home" src={logo}/>
         {podcastFirst ? <div><Link to={`/podcast`} style={{ textDecoration: 'none', color: "inherit" }}><div className="podcast-headline"><h3>Latest Echomusings Podcast Epidsode: {podcastFirst.title}</h3>
         </div></Link><div className="podcast-home">
-          <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src={soundcloudSource}></iframe><div className="iframePlayer"></div>
+          <iframe width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" src={soundcloudSource}></iframe><div className="iframePlayer"></div>
         </div></div> : ''}
 
         <div className="article-container">{latestArticle}{secondLatestArticle}</div>
