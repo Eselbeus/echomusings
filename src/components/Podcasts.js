@@ -18,10 +18,15 @@ class Podcasts extends React.Component {
     let token = localStorage.getItem('token')
     let podcasts = this.props.podcasts;
     let podcastComponents;
-    if (podcasts !== undefined){
-      podcastComponents = podcasts.sort((a,b) => {return b.id - a.id}).map(podcast => {
-        return <Podcast podcast={podcast} key={podcast.id}/>
-      })
+    try {
+      if (podcasts !== undefined){
+        podcastComponents = podcasts.sort((a,b) => {return b.id - a.id}).map(podcast => {
+          return <Podcast podcast={podcast} key={podcast.id}/>
+        })
+      }
+    }
+    catch {
+      podcastComponents = 'Podcasts loading. Try refreshing if not loading.'
     }
     return (
       <div className="podcasts">

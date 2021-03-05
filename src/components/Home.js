@@ -9,10 +9,15 @@ class Home extends React.Component {
 
     let articles = this.props.articles;
     let articleComponents;
-    if (articles !== undefined){
-      articleComponents = articles.sort((a,b) => {return b.id - a.id}).map(article => {
-        return <Link to={`/articles/${article.id}`} style={{ textDecoration: 'none', color: "inherit" }} key={article.id}><Article article={article} key={article.id} /></Link>
-      })
+    try {
+      if (articles !== undefined){
+        articleComponents = articles.sort((a,b) => {return b.id - a.id}).map(article => {
+          return <Link to={`/articles/${article.id}`} style={{ textDecoration: 'none', color: "inherit" }} key={article.id}><Article article={article} key={article.id} /></Link>
+        })
+      }
+    }
+    catch {
+      articleComponents = "News loading. Refresh if not loading."
     }
 
     let latestArticle = articleComponents[0]
@@ -22,11 +27,16 @@ class Home extends React.Component {
     let podcastFirst;
     let soundcloudUrlId;
     let soundcloudSource;
-    if (podcasts !== undefined){
-      podcastFirst = podcasts[0]
-      if (podcastFirst !== undefined){
-        soundcloudUrlId = podcastFirst.url
+    try {
+      if (podcasts !== undefined){
+        podcastFirst = podcasts[0]
+        if (podcastFirst !== undefined){
+          soundcloudUrlId = podcastFirst.url
+        }
       }
+    }
+    catch {
+      podcastFirst = "Podcast loading. Refresh if not loading."
     }
 
     soundcloudSource = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${soundcloudUrlId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`

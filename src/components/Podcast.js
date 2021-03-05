@@ -105,7 +105,7 @@ class Podcast extends React.Component {
               <input className="podcast-form-item" placeholder="Subtitle" name="subtitle" type="text" value={this.state.subtitle} onChange={this.changeHandler}/><br/><br/>
               <input className="podcast-form-item" placeholder="Soundcloud Url" name="url" type="text" value={this.state.url} onChange={this.changeHandler}/><br/><br/>
               <input className="podcast-form-item" placeholder="Description" name="description" type="text" value={this.state.description} onChange={this.changeHandler}/><br/><br/>
-              <input className="podcast-form-item" placeholder="toggle tracks or playlists" name="embedType" type="text" value={this.state.embedType} onChange={this.changeHandler}/><br/><br/>
+              <input className="podcast-form-item" placeholder="toggle tracks or playlists" name="embedType" type="text" value={this.state.embedType} onChange={this.changeHandler}/> Ok to leave blank. This is used for switching between track or playlist<br/><br/>
               <input className="submit" type="submit" value="Update Podcast"/>
             </form>
             : ''}

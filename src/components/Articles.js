@@ -23,11 +23,17 @@ class Articles extends React.Component {
     let token = localStorage.getItem('token')
     let articles = this.props.articles;
     let articleComponents;
-    if (articles !== undefined){
-      articleComponents = articles.sort((a,b) => {return b.id - a.id}).map(article => {
-        return <Link to={`/articles/${article.id}`} style={{ textDecoration: 'none', color: "inherit" }} key={article.id}><Article article={article} key={article.id} /></Link>
-      })
+    try {
+      if (articles !== undefined){
+        articleComponents = articles.sort((a,b) => {return b.id - a.id}).map(article => {
+          return <Link to={`/articles/${article.id}`} style={{ textDecoration: 'none', color: "inherit" }} key={article.id}><Article article={article} key={article.id} /></Link>
+        })
+      }
     }
+    catch {
+      articleComponents = "News loading. Refresh if not loading."
+    }
+
     return (
       <div className="articles">
         <h1>Articles</h1>
