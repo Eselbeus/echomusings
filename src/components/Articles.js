@@ -7,7 +7,6 @@ import '../App.scss';
 
 class Articles extends React.Component {
   state = {
-    articles: [],
     title: '',
     imagelink: '',
     imagelink2: '',
@@ -26,7 +25,7 @@ class Articles extends React.Component {
   }
 
   render(){
-    console.log(this.props.articles.articles, "render props")
+    console.log(this.props.articles, "render props")
     let token = localStorage.getItem('token')
     let articles = this.props.articles.articles;
     let articleComponents;

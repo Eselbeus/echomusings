@@ -1,10 +1,11 @@
 import React from 'react'
-import '../App.scss';
+import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
+import { getArticles } from '../actions/articleActions'
+import '../App.scss';
 
 class ArticlePage extends React.Component {
   state = {
-    articles: [],
     article: {},
     title: '',
     imagelink: '',
@@ -17,20 +18,16 @@ class ArticlePage extends React.Component {
   }
 
   componentDidMount(){
-    fetch(`http://localhost:3000/api/v1/articles`)
-      .then(res => res.json())
-      .then(articles => {
-      this.setState({articles: articles})
-        let article_id = this.props.match.params.id
-        article_id = parseInt(article_id)
-        let articleInfo;
-        if (this.state.articles !== undefined){
-          articleInfo = this.state.articles.find((article) => {
-            return article.id === article_id
-          })
-        }
-        this.setState({article: articleInfo})}
-    )
+    this.props.getArticles()
+    let article_id = this.props.match.params.id
+    article_id = parseInt(article_id)
+    let articleInfo;
+    if (this.props.articles.articles !== undefined){
+      articleInfo = this.props.articles.articles.find((article) => {
+        return article.id === article_id
+      })
+    }
+    this.setState({article: articleInfo})
   }
 
   changeHandler = (e) => {
@@ -134,4 +131,8 @@ class ArticlePage extends React.Component {
   }
 }
 
-export default withRouter(ArticlePage);
+const mapStateToProps = state => ({ articles: state.articles })
+
+const mapDispatchToProps = { getArticles }
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ArticlePage));
