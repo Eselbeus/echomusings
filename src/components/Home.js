@@ -1,13 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Article from './Article'
 import logo from '../assets/Echo-Musings_cropped.jpg'
+import { getArticles } from '../actions/articleActions'
 import '../App.scss';
 
 class Home extends React.Component {
-  render(){
+  componentDidMount() {
+    this.props.getArticles()
+  }
 
-    let articles = this.props.articles;
+  render(){
+    console.log(this.props.articles.articles, "render props")
+    let articles = this.props.articles.articles;
     let articleComponents;
     try {
       if (articles !== undefined){
@@ -15,6 +21,8 @@ class Home extends React.Component {
           return <Link to={`/articles/${article.id}`} style={{ textDecoration: 'none', color: "inherit" }} key={article.id}><Article article={article} key={article.id} /></Link>
         })
       }
+      let latestArticle = articleComponents[0]
+      let secondLatestArticle = articleComponents[1]
     }
     catch {
       articleComponents = "News loading. Refresh if not loading."
@@ -58,4 +66,8 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({ articles: state.articles })
+
+const mapDispatchToProps = { getArticles }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

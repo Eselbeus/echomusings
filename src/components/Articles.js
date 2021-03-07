@@ -1,6 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Article from './Article'
+import { getArticles } from '../actions/articleActions'
 import '../App.scss';
 
 class Articles extends React.Component {
@@ -15,13 +17,18 @@ class Articles extends React.Component {
     contentpt3: ''
   }
 
+  componentDidMount() {
+    this.props.getArticles()
+  }
+
   changeHandler = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
 
   render(){
+    console.log(this.props.articles.articles, "render props")
     let token = localStorage.getItem('token')
-    let articles = this.props.articles;
+    let articles = this.props.articles.articles;
     let articleComponents;
     try {
       if (articles !== undefined){
@@ -55,4 +62,8 @@ class Articles extends React.Component {
   }
 }
 
-export default Articles;
+const mapStateToProps = state => ({ articles: state.articles })
+
+const mapDispatchToProps = { getArticles }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Articles);

@@ -31,13 +31,13 @@ class App extends React.Component {
           .then(resp => resp.json())
           .then(user => {
             this.setState({ user }, () => {
-              
+
             })
           })
     };
-    fetch(`http://localhost:3000/api/v1/articles`)
-      .then(res => res.json())
-      .then(articles => this.setState({articles: articles}))
+    // fetch(`http://localhost:3000/api/v1/articles`)
+    //   .then(res => res.json())
+    //   .then(articles => this.setState({articles: articles}))
 
       fetch(`http://localhost:3000/api/v1/podcasts`)
         .then(res => res.json())
@@ -216,10 +216,10 @@ class App extends React.Component {
           <Route exact path='/about' component={About} />
           <Route path="/admin" render={() => <Admin loginHandler={this.loginHandler} signupHandler={this.signupHandler}/>}/>
           <Route exact path='/contact' component={Contact} />
-          <Route exact path="/articles" render={() => <Articles currentUser={this.state.user} articles={this.state.articles} submitHandler={this.submitHandler}/>}/>
+          <Route exact path="/articles" render={() => <Articles currentUser={this.state.user} submitHandler={this.submitHandler}/>}/>
           <Route exact path="/articles/:id" render={props => <ArticlePage currentUser={this.state.user}/>}/>
           <Route path="/podcast" render={() => <Podcasts currentUser={this.state.user} podcasts={this.state.podcasts} submitHandler={this.submitHandlerPodcast}/>}/>
-          <Route exact path='/' render={() => <Home articles={this.state.articles} podcasts={this.state.podcasts}/>}/>
+          <Route exact path='/' render={() => <Home podcasts={this.state.podcasts}/>}/>
         </Switch>
         <Footer />
       </div>
