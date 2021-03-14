@@ -37,7 +37,7 @@ class Articles extends React.Component {
       }
     }
     catch {
-      articleComponents = "News loading. Refresh if not loading."
+      articleComponents = "News loading. Refresh if not loading. If not loading then come back later"
     }
 
     return (

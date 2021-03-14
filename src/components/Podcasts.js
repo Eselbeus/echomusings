@@ -1,5 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Podcast from './Podcast'
+import { getPodcasts } from '../actions/podcastActions'
 import '../App.scss';
 
 class Podcasts extends React.Component {
@@ -10,13 +12,17 @@ class Podcasts extends React.Component {
     description: ''
   }
 
+  componentDidMount() {
+    this.props.getPodcasts()
+  }
+
   changeHandler = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
 
   render(){
     let token = localStorage.getItem('token')
-    let podcasts = this.props.podcasts;
+    let podcasts = this.props.podcasts.podcasts;
     let podcastComponents;
     try {
       if (podcasts !== undefined){
@@ -26,7 +32,7 @@ class Podcasts extends React.Component {
       }
     }
     catch {
-      podcastComponents = 'Podcasts loading. Try refreshing if not loading.'
+      podcastComponents = 'Podcasts loading. Try refreshing if not loading. If not loading then come back later'
     }
     return (
       <div className="podcasts">
@@ -47,4 +53,8 @@ class Podcasts extends React.Component {
   }
 }
 
-export default Podcasts;
+const mapStateToProps = state => ({ podcasts: state.podcasts })
+
+const mapDispatchToProps = { getPodcasts }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Podcasts);

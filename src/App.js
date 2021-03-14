@@ -34,13 +34,6 @@ class App extends React.Component {
             })
           })
     };
-    // fetch(`http://localhost:3000/api/v1/articles`)
-    //   .then(res => res.json())
-    //   .then(articles => this.setState({articles: articles}))
-
-      fetch(`http://localhost:3000/api/v1/podcasts`)
-        .then(res => res.json())
-        .then(podcasts => this.setState({podcasts: podcasts}))
   }
 
   submitHandler = (e) => {

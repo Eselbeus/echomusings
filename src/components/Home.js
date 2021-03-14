@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom'
 import Article from './Article'
 import logo from '../assets/Echo-Musings_cropped.jpg'
 import { getArticles } from '../actions/articleActions'
+import { getPodcasts } from '../actions/podcastActions'
 import '../App.scss';
 
 class Home extends React.Component {
   componentDidMount() {
     this.props.getArticles()
+    this.props.getPodcasts()
   }
 
   render(){
-    console.log(this.props.articles.articles, "render props")
+    console.log(this.props, "render props")
     let articles = this.props.articles.articles;
     let articleComponents;
     try {
@@ -25,13 +27,13 @@ class Home extends React.Component {
       let secondLatestArticle = articleComponents[1]
     }
     catch {
-      articleComponents = "News loading. Refresh if not loading."
+      articleComponents = "News loading. Refresh if not loading. If not loading then come back later"
     }
 
     let latestArticle = articleComponents[0]
     let secondLatestArticle = articleComponents[1]
 
-    let podcasts = this.props.podcasts;
+    let podcasts = this.props.podcasts.podcasts;
     let podcastFirst;
     let soundcloudUrlId;
     let soundcloudSource;
@@ -44,7 +46,7 @@ class Home extends React.Component {
       }
     }
     catch {
-      podcastFirst = "Podcast loading. Refresh if not loading."
+      podcastFirst = "Podcast loading. Refresh if not loading. If not loading then come back later"
     }
 
     soundcloudSource = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${soundcloudUrlId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`
@@ -66,8 +68,8 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ articles: state.articles })
+const mapStateToProps = state => ({ articles: state.articles, podcasts: state.podcasts })
 
-const mapDispatchToProps = { getArticles }
+const mapDispatchToProps = { getArticles: getArticles, getPodcasts: getPodcasts }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
