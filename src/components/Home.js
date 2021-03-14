@@ -39,6 +39,7 @@ class Home extends React.Component {
     let soundcloudSource;
     try {
       if (podcasts !== undefined){
+        podcasts = podcasts.sort((a,b) => {return b.id - a.id})
         podcastFirst = podcasts[0]
         if (podcastFirst !== undefined){
           soundcloudUrlId = podcastFirst.url

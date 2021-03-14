@@ -25,7 +25,6 @@ class Articles extends React.Component {
   }
 
   render(){
-    console.log(this.props.articles, "render props")
     let token = localStorage.getItem('token')
     let articles = this.props.articles.articles;
     let articleComponents;
