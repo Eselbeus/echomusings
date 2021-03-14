@@ -14,24 +14,24 @@ class Home extends React.Component {
   }
 
   render(){
-    console.log(this.props, "render props")
     let articles = this.props.articles.articles;
     let articleComponents;
+    let latestArticle;
+    let secondLatestArticle;
     try {
       if (articles !== undefined){
         articleComponents = articles.sort((a,b) => {return b.id - a.id}).map(article => {
           return <Link to={`/articles/${article.id}`} style={{ textDecoration: 'none', color: "inherit" }} key={article.id}><Article article={article} key={article.id} /></Link>
         })
       }
-      let latestArticle = articleComponents[0]
-      let secondLatestArticle = articleComponents[1]
+      latestArticle = articleComponents[0]
+      secondLatestArticle = articleComponents[1]
     }
     catch {
       articleComponents = "News loading. Refresh if not loading. If not loading then come back later"
+      latestArticle = "News loading. Refresh if not loading. If not loading then come back later"
+      secondLatestArticle = "News loading. Refresh if not loading. If not loading then come back later"
     }
-
-    let latestArticle = articleComponents[0]
-    let secondLatestArticle = articleComponents[1]
 
     let podcasts = this.props.podcasts.podcasts;
     let podcastFirst;
