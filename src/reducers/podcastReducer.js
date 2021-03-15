@@ -5,6 +5,9 @@ const podcastReducer = (podcastState = initialState, action) => {
     case("LOAD_PODCASTS"): {
       return { ...podcastState, podcasts: action.payload }
     }
+    case("POST_PODCAST"): {
+      return { ...podcastState, podcasts: [...podcastState.podcasts, action.payload]}
+    }
     default:
       return podcastState
   }

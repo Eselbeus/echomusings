@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Podcast from './Podcast'
 import { getPodcasts } from '../actions/podcastActions'
+import { postPodcast } from '../actions/podcastActions'
 import '../App.scss';
 
 class Podcasts extends React.Component {
@@ -18,6 +19,56 @@ class Podcasts extends React.Component {
 
   changeHandler = (e) => {
     this.setState({[e.target.name]: e.target.value})
+  }
+
+  submitHandlerPodcast = (e) => {
+    e.preventDefault()
+    let title = e.target.title.value
+    let subtitle = e.target.subtitle.value
+    let description = e.target.description.value
+    let url = e.target.url.value
+    let embedType;
+    if (url.includes("tracks") || url.includes("playlists")){
+      let urlArr;
+      if (url.includes("tracks")){
+        urlArr = url.split("tracks/")
+        embedType = "tracks"
+      }
+      else if (url.includes("playlists")){
+        urlArr = url.split("playlists/")
+        embedType = "playlists"
+      }
+      let nextPart = urlArr[1].split("&color")
+      url = nextPart[0]
+      let user_id = this.props.currentUser.user.id
+
+      let config = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          title: title,
+          subtitle: subtitle,
+          url: url,
+          description: description,
+          embed_type: embedType,
+          user_id: user_id
+        })
+      }
+
+      if (title.length < 1){
+        alert("Title cannot be blank")
+      }
+      else {
+        this.props.postPodcast(user_id, config)
+      }
+    }
+    else {
+      alert("Embed code not valid. Please try again.")
+    }
+
   }
 
   render(){
@@ -39,7 +90,7 @@ class Podcasts extends React.Component {
         {!!token ?
         <div>
           <h1>Podcast</h1>
-          <form onSubmit={this.props.submitHandler}>
+          <form onSubmit={this.submitHandlerPodcast}>
             <input className="article-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
             <input className="article-form-item" placeholder="Subtitle" name="subtitle" type="text" value={this.state.subtitle} onChange={this.changeHandler}/><br/><br/>
             <input className="article-form-item" placeholder="Soundcloud EmbedCode" name="url" type="text" value={this.state.url} onChange={this.changeHandler}/><br/><br/>
@@ -55,6 +106,6 @@ class Podcasts extends React.Component {
 
 const mapStateToProps = state => ({ podcasts: state.podcasts })
 
-const mapDispatchToProps = { getPodcasts }
+const mapDispatchToProps = { getPodcasts, postPodcast }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Podcasts);
