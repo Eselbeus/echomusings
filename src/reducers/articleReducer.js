@@ -5,6 +5,9 @@ const articleReducer = (articleState = initialState, action) => {
     case("LOAD_ARTICLES"): {
       return { ...articleState, articles: action.payload }
     }
+    case("POST_ARTICLE"): {
+      return { ...articleState, articles: [...articleState.articles, action.payload]}
+    }
     default:
       return articleState
   }
