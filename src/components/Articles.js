@@ -9,6 +9,8 @@ import '../App.scss';
 class Articles extends React.Component {
   state = {
     title: '',
+    author: '',
+    date: '',
     imagelink: '',
     imagelink2: '',
     imagelink3: '',
@@ -28,6 +30,8 @@ class Articles extends React.Component {
   submitHandler = (e) => {
     e.preventDefault()
     let title = e.target.title.value
+    let author = e.target.author.value
+    let date = e.target.date.value
     let imagelink = e.target.imagelink.value
     let imagelink2 = e.target.imagelink2.value
     let imagelink3 = e.target.imagelink3.value
@@ -44,6 +48,8 @@ class Articles extends React.Component {
       },
       body: JSON.stringify({
         title: title,
+        author: author,
+        publication_date: date,
         imagelink: imagelink,
         imagelink2: imagelink2,
         imagelink3: imagelink3,
@@ -83,6 +89,8 @@ class Articles extends React.Component {
         {!!token ?
         <form onSubmit={this.submitHandler}>
           <input className="article-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
+          <input className="article-form-item" placeholder="Author" name="author" type="text" value={this.state.author} onChange={this.changeHandler}/><br/><br/>
+          <input className="article-form-item" placeholder="Date" name="date" type="text" value={this.state.date} onChange={this.changeHandler}/><br/><br/>
           <input className="article-form-item" placeholder="Image Link" name="imagelink" type="text" value={this.state.imagelink} onChange={this.changeHandler}/><br/><br/>
           <textarea className="contact-item message-input" placeholder="Content" name="content" type="text" value={this.state.content} onChange={this.changeHandler}></textarea><br/>
           <input className="article-form-item" placeholder="Image Link 2" name="imagelink2" type="text" value={this.state.imagelink2} onChange={this.changeHandler}/><br/><br/>

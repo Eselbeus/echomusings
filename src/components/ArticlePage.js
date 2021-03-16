@@ -8,6 +8,8 @@ class ArticlePage extends React.Component {
   state = {
     article: {},
     title: '',
+    author: '',
+    date: '',
     imagelink: '',
     imagelink2: '',
     imagelink3: '',
@@ -38,6 +40,8 @@ class ArticlePage extends React.Component {
     e.preventDefault()
     let article = this.state.article
     let title = e.target.title.value || article.title
+    let author = e.target.author.value || article.author
+    let date = e.target.date.value || article.date
     let imagelink = e.target.imagelink.value || article.imagelink
     let imagelink2 = e.target.imagelink2.value || article.imagelink2
     let imagelink3 = e.target.imagelink3.value || article.imagelink3
@@ -54,6 +58,8 @@ class ArticlePage extends React.Component {
       },
       body: JSON.stringify({
         title: title,
+        author: author,
+        publication_date: date,
         imagelink: imagelink,
         imagelink2: imagelink2,
         imagelink3: imagelink3,
@@ -70,6 +76,8 @@ class ArticlePage extends React.Component {
         imagelink2: '',
         imagelink3: '',
         content: '',
+        author: '',
+        publication_date: '',
         contentpt2: '',
         contentpt3: ''})
       })
@@ -97,6 +105,8 @@ class ArticlePage extends React.Component {
     return (
       <div className="article-page">
         <h2>{this.state.article ? this.state.article.title: ''}</h2>
+        <h3>By {this.state.article ? this.state.article.author: ''}</h3>
+        <h3>{this.state.article ? this.state.article.publication_date: ''}</h3>
         {this.state.article ? <img className="articleimg-page" alt='' src={this.state.article.imagelink}/> : ''}
         <p className='article-content'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.article ? this.state.article.content: ''}</p>
         {this.state.article ? <img className="articleimg-page" alt='' src={this.state.article.imagelink2}/> : ''}
@@ -107,6 +117,8 @@ class ArticlePage extends React.Component {
           {!!token ?
           <form onSubmit={this.submitHandler}>
             <input className="article-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
+            <input className="article-form-item" placeholder="Author" name="author" type="text" value={this.state.author} onChange={this.changeHandler}/><br/><br/>
+            <input className="article-form-item" placeholder="Date" name="date" type="text" value={this.state.date} onChange={this.changeHandler}/><br/><br/>
             <input className="article-form-item" placeholder="Image Link" name="imagelink" type="text" value={this.state.imagelink} onChange={this.changeHandler}/><br/><br/>
             <textarea className="contact-item message-input" placeholder="Content" name="content" type="text" value={this.state.content} onChange={this.changeHandler}></textarea><br/>
             <input className="article-form-item" placeholder="Image Link 2" name="imagelink2" type="text" value={this.state.imagelink2} onChange={this.changeHandler}/><br/><br/>
