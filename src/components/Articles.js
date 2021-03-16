@@ -14,9 +14,11 @@ class Articles extends React.Component {
     imagelink: '',
     imagelink2: '',
     imagelink3: '',
+    imagelink4: '',
     content: '',
     contentpt2: '',
-    contentpt3: ''
+    contentpt3: '',
+    contentpt4: ''
   }
 
   componentDidMount() {
@@ -35,9 +37,11 @@ class Articles extends React.Component {
     let imagelink = e.target.imagelink.value
     let imagelink2 = e.target.imagelink2.value
     let imagelink3 = e.target.imagelink3.value
+    let imagelink4 = e.target.imagelink4.value
     let content = e.target.content.value
     let contentpt2 = e.target.contentpt2.value
     let contentpt3 = e.target.contentpt3.value
+    let contentpt4 = e.target.contentpt4.value
     let user_id = this.props.currentUser.user.id
 
     let config = {
@@ -53,9 +57,11 @@ class Articles extends React.Component {
         imagelink: imagelink,
         imagelink2: imagelink2,
         imagelink3: imagelink3,
+        imagelink4: imagelink4,
         content: content,
         contentpt2: contentpt2,
         contentpt3: contentpt3,
+        contentpt4: contentpt4,
         user_id: user_id
       })
     }
@@ -97,6 +103,8 @@ class Articles extends React.Component {
           <textarea className="contact-item message-input" placeholder="Content Pt. 2" name="contentpt2" type="text" value={this.state.contentpt2} onChange={this.changeHandler}></textarea><br/>
           <input className="article-form-item" placeholder="Image Link 3" name="imagelink3" type="text" value={this.state.imagelink3} onChange={this.changeHandler}/><br/><br/>
           <textarea className="contact-item message-input" placeholder="Content Pt. 3" name="contentpt3" type="text" value={this.state.contentpt3} onChange={this.changeHandler}></textarea><br/>
+          <input className="article-form-item" placeholder="Image Link 4" name="imagelink4" type="text" value={this.state.imagelink4} onChange={this.changeHandler}/><br/><br/>
+          <textarea className="contact-item message-input" placeholder="Content Pt. 4" name="contentpt4" type="text" value={this.state.contentpt4} onChange={this.changeHandler}></textarea><br/>
           <input className="submit" type="submit" value="Create New Article"/>
         </form>
         : ''}

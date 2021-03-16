@@ -13,9 +13,11 @@ class ArticlePage extends React.Component {
     imagelink: '',
     imagelink2: '',
     imagelink3: '',
+    imagelink4: '',
     content: '',
     contentpt2: '',
     contentpt3: '',
+    contentpt4: '',
     delete: false
   }
 
@@ -45,9 +47,11 @@ class ArticlePage extends React.Component {
     let imagelink = e.target.imagelink.value || article.imagelink
     let imagelink2 = e.target.imagelink2.value || article.imagelink2
     let imagelink3 = e.target.imagelink3.value || article.imagelink3
+    let imagelink4 = e.target.imagelink4.value || article.imagelink4
     let content = e.target.content.value || article.content
     let contentpt2 = e.target.contentpt2.value || article.contentpt2
     let contentpt3 = e.target.contentpt3.value || article.contentpt3
+    let contentpt4 = e.target.contentpt4.value || article.contentpt4
     let id = this.props.match.params.id
 
     let config = {
@@ -63,9 +67,11 @@ class ArticlePage extends React.Component {
         imagelink: imagelink,
         imagelink2: imagelink2,
         imagelink3: imagelink3,
+        imagelink4: imagelink4,
         content: content,
         contentpt2: contentpt2,
-        contentpt3: contentpt3
+        contentpt3: contentpt3,
+        contentpt4: contentpt4
       })
     }
 
@@ -75,10 +81,12 @@ class ArticlePage extends React.Component {
         imagelink: '',
         imagelink2: '',
         imagelink3: '',
+        imagelink4: '',
         content: '',
         author: '',
         publication_date: '',
         contentpt2: '',
+        contentpt4: '',
         contentpt3: ''})
       })
   }
@@ -101,18 +109,22 @@ class ArticlePage extends React.Component {
 
   render(){
     let token = localStorage.getItem('token')
+    console.log(this.state.article, "article")
 
     return (
       <div className="article-page">
         <h2>{this.state.article ? this.state.article.title: ''}</h2>
         <h3>By {this.state.article ? this.state.article.author: ''}</h3>
         <h3>{this.state.article ? this.state.article.publication_date: ''}</h3>
-        {this.state.article ? <img className="articleimg-page" alt='' src={this.state.article.imagelink}/> : ''}
         <p className='article-content'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.article ? this.state.article.content: ''}</p>
-        {this.state.article ? <img className="articleimg-page" alt='' src={this.state.article.imagelink2}/> : ''}
+        {this.state.article ? <img className="articleimg-page" alt='' src={this.state.article.imagelink}/> : ''}
         <p className='article-content'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.article ? this.state.article.contentpt2: ''}</p>
-        {this.state.article ? <img className="articleimg-page" alt='' src={this.state.article.imagelink3}/> : ''}
+        {this.state.article ? <img className="articleimg-page" alt='' src={this.state.article.imagelink2}/> : ''}
         <p className='article-content'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.article ? this.state.article.contentpt3: ''}</p>
+        {this.state.article ? <img className="articleimg-page" alt='' src={this.state.article.imagelink3}/> : ''}
+        <p className='article-content'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.article ? this.state.article.contentpt4: ''}</p>
+        {this.state.article ? <img className="articleimg-page" alt='' src={this.state.article.imagelink4}/> : ''}
+
         <div className="edit">
           {!!token ?
           <form onSubmit={this.submitHandler}>
@@ -125,6 +137,8 @@ class ArticlePage extends React.Component {
             <textarea className="contact-item message-input" placeholder="Content Pt. 2" name="contentpt2" type="text" value={this.state.contentpt2} onChange={this.changeHandler}></textarea><br/>
             <input className="article-form-item" placeholder="Image Link 3" name="imagelink3" type="text" value={this.state.imagelink3} onChange={this.changeHandler}/><br/><br/>
             <textarea className="contact-item message-input" placeholder="Content Pt. 3" name="contentpt3" type="text" value={this.state.contentpt3} onChange={this.changeHandler}></textarea><br/>
+            <input className="article-form-item" placeholder="Image Link 4" name="imagelink4" type="text" value={this.state.imagelink4} onChange={this.changeHandler}/><br/><br/>
+            <textarea className="contact-item message-input" placeholder="Content Pt. 4" name="contentpt4" type="text" value={this.state.contentpt4} onChange={this.changeHandler}></textarea><br/>
             <input className="submit" type="submit" value="Edit Article"/>
           </form>
           : ''}
