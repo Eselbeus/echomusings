@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../App.scss';
 
 class Podcast extends React.Component {
@@ -17,18 +18,18 @@ class Podcast extends React.Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  deleteHandler = (e) => {
-    // e.preventDefault()
-    fetch(`http://localhost:3000/api/v1/podcasts/${this.props.podcast.id}`, {
-      method: "DELETE",
-      headers: {
-        'Content-Type': 'application/json',
-        'Accepts': 'application/json',
-      }
-    })
-  }
+  // deleteHandler = (e) => {
+  //   // e.preventDefault()
+  //   fetch(`http://localhost:3000/api/v1/podcasts/${this.props.podcast.id}`, {
+  //     method: "DELETE",
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accepts': 'application/json',
+  //     }
+  //   })
+  // }
 
-  submitHandler = (e) => {
+  submitHandlerPatch = (e) => {
     // e.preventDefault()
     let title = e.target.title.value || this.props.podcast.title
     let subtitle = e.target.subtitle.value || this.props.podcast.subtitle
@@ -96,11 +97,11 @@ class Podcast extends React.Component {
         {!!token ?
         <div>
           <div className="edit" onClick={this.editForm}>
-            <button>Edit</button>
+            <Link to={`/podcasts`}><button>Edit</button></Link>
           </div>
           <div className="edit">
             {!!token ?
-            <form onSubmit={this.submitHandler}>
+            <form onSubmit={this.submitHandlerPatch}>
               <input className="podcast-form-item" placeholder="Title" name="title" type="text" value={this.state.title} onChange={this.changeHandler}/><br/><br/>
               <input className="podcast-form-item" placeholder="Subtitle" name="subtitle" type="text" value={this.state.subtitle} onChange={this.changeHandler}/><br/><br/>
               <input className="podcast-form-item" placeholder="Soundcloud Url" name="url" type="text" value={this.state.url} onChange={this.changeHandler}/><br/><br/>
@@ -113,7 +114,7 @@ class Podcast extends React.Component {
           <div className="delete" onClick={this.deleteConfirm}>
             <button>Delete</button>
           </div>
-          {this.state.delete ? <div className="delete" onClick={this.deleteHandler}>
+          {this.state.delete ? <div className="delete" onClick={(e) => this.props.deleteHandler(this.props.podcast.id, e)}>
             <button>Confirm Delete?</button>
           </div>: ''}
         </div>

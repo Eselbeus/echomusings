@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import Podcast from './Podcast'
 import { getPodcasts } from '../actions/podcastActions'
 import { postPodcast } from '../actions/podcastActions'
+import { deletePodcast } from '../actions/podcastActions'
+import { removePodcast } from '../actions/podcastActions'
 import '../App.scss';
 
 class Podcasts extends React.Component {
@@ -71,6 +73,19 @@ class Podcasts extends React.Component {
 
   }
 
+  deleteHandler = (id, e) => {
+    e.preventDefault()
+    this.props.removePodcast(id)
+    let config = {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accepts': 'application/json',
+      }
+    }
+    this.props.deletePodcast(id, config)
+  }
+
   render(){
     let token = localStorage.getItem('token')
     let podcasts = this.props.podcasts.podcasts;
@@ -78,7 +93,7 @@ class Podcasts extends React.Component {
     try {
       if (podcasts !== undefined){
         podcastComponents = podcasts.sort((a,b) => {return b.id - a.id}).map(podcast => {
-          return <Podcast podcast={podcast} key={podcast.id}/>
+          return <Podcast podcast={podcast} key={podcast.id} deleteHandler={this.deleteHandler}/>
         })
       }
     }
@@ -106,6 +121,6 @@ class Podcasts extends React.Component {
 
 const mapStateToProps = state => ({ podcasts: state.podcasts })
 
-const mapDispatchToProps = { getPodcasts, postPodcast }
+const mapDispatchToProps = { getPodcasts, postPodcast, deletePodcast, removePodcast }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Podcasts);

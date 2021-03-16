@@ -2,6 +2,8 @@ const loadPodcasts = (podcasts) => ({ type: "LOAD_PODCASTS", payload: podcasts})
 
 const newPodcast = (podcast) => ({type: "POST_PODCAST", payload: podcast})
 
+export const removePodcast = (id) => ({type: "DELETE_PODCAST", payload: id})
+
 export const getPodcasts = () => {
   return (dispatch) => {
     return fetch("http://localhost:3000/api/v1/podcasts")
@@ -17,5 +19,12 @@ export const postPodcast = (id, config) => {
       .then(res => {
         dispatch(newPodcast(res))
       })
+  }
+}
+
+export const deletePodcast = (id, config) => {
+  removePodcast(id)
+  return (dispatch) => {
+    return fetch(`http://localhost:3000/api/v1/podcasts/${id}`, config)
   }
 }
