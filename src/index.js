@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
+import { loadState, saveState } from './localStorage'
+import throttle from 'lodash/throttle'
 import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
@@ -16,7 +18,15 @@ const rootReducer = combineReducers({
   podcasts: podcastReducer
 })
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const persistedState = loadState();
+
+const store = createStore(rootReducer, persistedState, applyMiddleware(thunk))
+
+store.subscribe(throttle(() => {
+  saveState({
+    articles: store.getState().articles
+  });
+}, 1000));
 
 ReactDOM.render(
   <Provider store={store}>

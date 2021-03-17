@@ -24,6 +24,8 @@ class ArticlePage extends React.Component {
   componentDidMount(){
     this.props.getArticles()
     let article_id = this.props.match.params.id
+    console.log(article_id, "id")
+    console.log(this.props, "art")
     article_id = parseInt(article_id)
     let articleInfo;
     if (this.props.articles.articles !== undefined){
@@ -109,8 +111,6 @@ class ArticlePage extends React.Component {
 
   render(){
     let token = localStorage.getItem('token')
-    console.log(this.state.article, "article")
-
     return (
       <div className="article-page">
         <h2>{this.state.article ? this.state.article.title: ''}</h2>
