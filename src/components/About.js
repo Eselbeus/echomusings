@@ -12,7 +12,7 @@ class About extends React.Component {
         </div>
         <div className="staff">
           <h2>Kevin Mayorga</h2>
-          <p>Kevin Mayorga is a musician and an aspiring musicologist, aiming to make music his main career. He focuses on contemporary music such as Rock to help bridge the differences between the masses. He also enjoys video games and livestreaming.
+          <p>Kevin Mayorga is a musician and an aspiring musicologist, aiming to make music his main career. He focuses on contemporary music such as Rock to help bridge the differences between the masses. He currently plays in his band Roschambeau and his solo project, Olinguito. He also enjoys video games and live streaming.
           </p>
         </div>
       </div>
