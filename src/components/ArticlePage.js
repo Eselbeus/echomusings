@@ -77,7 +77,7 @@ class ArticlePage extends React.Component {
       })
     }
 
-    fetch(`http://localhost:3000/api/v1/articles/${id}`, config)
+    fetch(`https://echo-musings.herokuapp.com/articles/${id}`, config)
       .then(res => res.json())
       .then(res => {this.setState({article: res, title: '',
         imagelink: '',
@@ -95,7 +95,7 @@ class ArticlePage extends React.Component {
 
   deleteHandler = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:3000/api/v1/articles/${this.state.article.id}`, {
+    fetch(`https://echo-musings.herokuapp.com/api/v1/articles/${this.state.article.id}`, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json',

@@ -18,17 +18,6 @@ class Podcast extends React.Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  // deleteHandler = (e) => {
-  //   // e.preventDefault()
-  //   fetch(`http://localhost:3000/api/v1/podcasts/${this.props.podcast.id}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accepts': 'application/json',
-  //     }
-  //   })
-  // }
-
   submitHandlerPatch = (e) => {
     // e.preventDefault()
     let title = e.target.title.value || this.props.podcast.title
@@ -53,7 +42,7 @@ class Podcast extends React.Component {
       })
     }
 
-    fetch(`http://localhost:3000/api/v1/podcasts/${id}`, config)
+    fetch(`https://echo-musings.herokuapp.com/api/v1/podcasts/${id}`, config)
       .then(res => res.json())
       .then(res => {this.setState({podcast: res, title: '',
         subtitle: '', description: ''
