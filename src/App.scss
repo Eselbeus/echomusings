@@ -32,6 +32,13 @@ $articleFont: "Georgia", "Times New Roman";
   margin-right: 15%;
 }
 
+@media (max-width: 620px) {
+  .about {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
 .articles {
   text-align: center;
   background: $mainBackgroundColor;
