@@ -39,11 +39,17 @@ $articleFont: "Georgia", "Times New Roman";
 .article-container {
   display: grid;
   grid-template-columns: 40% 40%;
-  grid-auto-rows: 400px;
   grid-column-gap: 10%;
   margin: 10%;
   margin-bottom: 30%;
   margin-top: 5%;
+}
+
+@media (max-width: 620px) {
+  .article-container {
+    grid-template-columns: 80%;
+    grid-column-gap: 0%;
+  }
 }
 
 .article {
@@ -52,7 +58,7 @@ $articleFont: "Georgia", "Times New Roman";
   width: 100%;
   margin: 1rem;
   background: #FFF;
-  background: #CCCCDD;
+  background: #AAAABB;
   padding: 1rem;
 }
 
