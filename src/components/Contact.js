@@ -39,24 +39,28 @@ class Contact extends React.Component {
     .then(res => {})
   }
 
+  // TODO: Future contact form implementation
+  // <div className="contact-form">
+  //   { !this.state.sent ?
+  //     <form onSubmit={this.submitHandler}>
+  //       <input className="contact-item" placeholder="Name" name="name" type="text" value={this.state.name} onChange={this.changeHandler}/><br/><br/>
+  //       <input className="contact-item" placeholder="Email" name="email" type="text" value={this.state.email} onChange={this.changeHandler}/><br/><br/>
+  //       <textarea className="contact-item message-input" placeholder="Message" name="message" type="text" value={this.state.message} onChange={this.changeHandler}></textarea><br/>
+  //       <input className="submit" type="submit" value="SEND"/>
+  //     </form>
+  //      : <h2>Thank you for your message!</h2>
+  //   }
+  //   </div>
+  // <h3>LinkedIn: <a href="https://www.linkedin.com/in/seannbranchfield/" target="_parent">LinkedIn</a></h3>
+  // <h3>Blog: <a href="https://medium.com/@eselbeus" target="_parent">Blog</a></h3>
+  // <h3>Email: <a href="mailto:eselbeus@gmail.com" target="_parent">Email</a></h3>
+
+
   render(){
     return (
       <div className="contact">
         <h1 className='pagehead'>Contact</h1>
-        <div className="contact-form">
-          { !this.state.sent ?
-            <form onSubmit={this.submitHandler}>
-              <input className="contact-item" placeholder="Name" name="name" type="text" value={this.state.name} onChange={this.changeHandler}/><br/><br/>
-              <input className="contact-item" placeholder="Email" name="email" type="text" value={this.state.email} onChange={this.changeHandler}/><br/><br/>
-              <textarea className="contact-item message-input" placeholder="Message" name="message" type="text" value={this.state.message} onChange={this.changeHandler}></textarea><br/>
-              <input className="submit" type="submit" value="SEND"/>
-            </form>
-             : <h2>Thank you for your message!</h2>
-          }
-          </div>
-        <h3>LinkedIn: <a href="https://www.linkedin.com/in/seannbranchfield/" target="_parent">LinkedIn</a></h3>
-        <h3>Blog: <a href="https://medium.com/@eselbeus" target="_parent">Blog</a></h3>
-        <h3>Email: <a href="mailto:eselbeus@gmail.com" target="_parent">Email</a></h3>
+        <h3>Email: <a href="mailto:echomusings@gmail.com" target="_parent">echomusings@gmail.com</a></h3>
       </div>
     )
   }

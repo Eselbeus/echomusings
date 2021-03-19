@@ -19,7 +19,7 @@ class App extends React.Component {
 
   componentDidMount = () => {
     let token = localStorage.token;
-    if (token) {fetch("http://localhost:3000/api/v1/current_user", {
+    if (token) {fetch("https://echo-musings.herokuapp.com/api/v1/current_user", {
           method: "GET",
           headers: {
             "content-type": "application/json",
@@ -44,7 +44,7 @@ class App extends React.Component {
     let password = e.target.password.value
     let key = e.target.key.value
     this.setState({sent: !this.state.sent})
-    fetch(`http://localhost:3000/api/v1/signup`, {
+    fetch(`https://echo-musings.herokuapp.com/api/v1/signup`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ class App extends React.Component {
     let password = e.target.password.value
     this.setState({sent: !this.state.sent})
 
-    fetch(`http://localhost:3000/api/v1/login/`, {
+    fetch(`https://echo-musings.herokuapp.com/api/v1/login/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -6,7 +6,7 @@ export const removePodcast = (id) => ({type: "DELETE_PODCAST", payload: id})
 
 export const getPodcasts = () => {
   return (dispatch) => {
-    return fetch("http://localhost:3000/api/v1/podcasts")
+    return fetch("https://echo-musings.herokuapp.com/api/v1/podcasts")
       .then(res => res.json())
       .then(res => dispatch(loadPodcasts(res)))
   }
@@ -14,7 +14,7 @@ export const getPodcasts = () => {
 
 export const postPodcast = (id, config) => {
   return (dispatch) => {
-    return fetch(`http://localhost:3000/api/v1/podcasts/`, config)
+    return fetch(`https://echo-musings.herokuapp.com/api/v1/podcasts/`, config)
       .then(res => res.json())
       .then(res => {
         dispatch(newPodcast(res))
@@ -25,6 +25,6 @@ export const postPodcast = (id, config) => {
 export const deletePodcast = (id, config) => {
   removePodcast(id)
   return (dispatch) => {
-    return fetch(`http://localhost:3000/api/v1/podcasts/${id}`, config)
+    return fetch(`https://echo-musings.herokuapp.com/api/v1/podcasts/${id}`, config)
   }
 }
