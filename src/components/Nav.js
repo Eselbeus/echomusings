@@ -46,7 +46,7 @@ class Nav extends React.Component {
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/articles">ARTICLES</NavLink>
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/podcast">PODCAST</NavLink>
         <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/about">ABOUT</NavLink>
-        <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/contact">GET IN TOUCH</NavLink>
+        <NavLink className="nav-elem" onClick={this.handleClick.bind(this)} to="/contact">CONTACT</NavLink>
         {!!token && this.props.currentUser.user ? <p className="nav-elem">Logged in as {this.props.currentUser.user.name}</p> : ''}
         {!!token ? <button className="nav-elem" onClick={this.props.logoutUser}>Logout</button> : ''}
 
