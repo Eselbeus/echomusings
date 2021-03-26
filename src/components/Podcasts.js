@@ -33,7 +33,7 @@ class Podcasts extends React.Component {
     if (url.includes("tracks") || url.includes("playlists") || url.includes("buzzsprout") ){
       let urlArr;
       if (url.includes("buzzsprout")){
-        urlArr = url.split("buzzsprout-player-")
+        urlArr = url.split("www.buzzsprout.com/1555001/")
         embedType = "buzzsprout"
       }
       else if (url.includes("tracks")){
@@ -45,7 +45,7 @@ class Podcasts extends React.Component {
         embedType = "playlists"
       }
       if (url.includes("buzzsprout")){
-        url = urlArr[1].split(`"`)[0]
+        url = urlArr[1].split(`?container_id`)[0]
       }
       else {
         let nextPart = urlArr[1].split("&color")

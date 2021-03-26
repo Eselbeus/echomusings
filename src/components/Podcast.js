@@ -68,7 +68,7 @@ class Podcast extends React.Component {
   render(){
     let token = localStorage.getItem('token')
     let soundcloudUrlId = this.props.podcast.url
-    let buzzsproutId = "buzzsprout-player-" + this.props.podcast.url
+    let buzzsproutId = "buzzsprout-player-" + this.props.podcast.url.split("-")[0]
     let soundcloudSource;
     if (this.props.podcast.embed_type === "tracks"){
       soundcloudSource = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${soundcloudUrlId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`
@@ -79,7 +79,7 @@ class Podcast extends React.Component {
 
     const script = document.createElement("script");
 
-    script.src = `https://www.buzzsprout.com/1555001/${this.props.podcast.url}-current-music-scene-industry-topics-a-live-music-and-comedy-event-during-the-pandemic.js?container_id=buzzsprout-player-8208202&player=small`;
+    script.src = `https://www.buzzsprout.com/1555001/${this.props.podcast.url}?container_id=buzzsprout-player-${this.props.podcast.url.split("-")[0]}&player=small`;
     script.async = true;
 
     document.body.appendChild(script);
