@@ -14,6 +14,10 @@ class Podcast extends React.Component {
     edit: false
   }
 
+  componentDidMount() {
+
+  }
+
   changeHandler = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
@@ -64,6 +68,7 @@ class Podcast extends React.Component {
   render(){
     let token = localStorage.getItem('token')
     let soundcloudUrlId = this.props.podcast.url
+    let buzzsproutId = "buzzsprout-player-" + this.props.podcast.url
     let soundcloudSource;
     if (this.props.podcast.embed_type === "tracks"){
       soundcloudSource = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${soundcloudUrlId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`
@@ -71,10 +76,21 @@ class Podcast extends React.Component {
     else if (this.props.podcast.embed_type === "playlists"){
       soundcloudSource = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/${soundcloudUrlId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`
     }
+
+    const script = document.createElement("script");
+
+    script.src = `https://www.buzzsprout.com/1555001/${this.props.podcast.url}-current-music-scene-industry-topics-a-live-music-and-comedy-event-during-the-pandemic.js?container_id=buzzsprout-player-8208202&player=small`;
+    script.async = true;
+
+    document.body.appendChild(script);
+
+
     return(
       <div>
         <h2>{this.props.podcast.title}</h2>
         <h4>{this.props.podcast.subtitle}</h4>
+
+        { this.props.podcast.embed_type === "tracks" || this.props.podcast.embed_type === "playlists" ?
         <section className="podcast-layout">
           <div className="podcast-enclosure podcast-layout-child">
             <iframe width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" src={soundcloudSource}></iframe><div className="iframePlayer"></div>
@@ -83,6 +99,19 @@ class Podcast extends React.Component {
             <p>{this.props.podcast.description}</p>
           </div>
         </section>
+        : ""
+        }
+
+        { this.props.podcast.embed_type === "buzzsprout" ?
+        <section className="podcast-layout">
+          <div className="podcast-home" id={buzzsproutId}></div>
+          <div className="podcast-description podcast-layout-child">
+            <p>{this.props.podcast.description}</p>
+          </div>
+        </section>
+        : ""
+        }
+
         {!!token ?
         <div>
           <div className="edit" onClick={this.editForm}>
