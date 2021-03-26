@@ -30,9 +30,13 @@ class Podcasts extends React.Component {
     let description = e.target.description.value
     let url = e.target.url.value
     let embedType;
-    if (url.includes("tracks") || url.includes("playlists")){
+    if (url.includes("tracks") || url.includes("playlists") || url.includes("buzzsprout") ){
       let urlArr;
-      if (url.includes("tracks")){
+      if (url.includes("buzzsprout")){
+        urlArr = url.split("www.buzzsprout.com/1555001/")
+        embedType = "buzzsprout"
+      }
+      else if (url.includes("tracks")){
         urlArr = url.split("tracks/")
         embedType = "tracks"
       }
@@ -40,8 +44,13 @@ class Podcasts extends React.Component {
         urlArr = url.split("playlists/")
         embedType = "playlists"
       }
-      let nextPart = urlArr[1].split("&color")
-      url = nextPart[0]
+      if (url.includes("buzzsprout")){
+        url = urlArr[1].split(`?container_id`)[0]
+      }
+      else {
+        let nextPart = urlArr[1].split("&color")
+        url = nextPart[0]
+      }
       let user_id = this.props.currentUser.user.id
 
       let config = {

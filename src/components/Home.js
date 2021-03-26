@@ -11,6 +11,13 @@ class Home extends React.Component {
   componentDidMount() {
     this.props.getArticles()
     this.props.getPodcasts()
+
+    // const script = document.createElement("script");
+    //
+    // script.src = "https://www.buzzsprout.com/1555001/8208202-current-music-scene-industry-topics-a-live-music-and-comedy-event-during-the-pandemic.js?container_id=buzzsprout-player-8208202&player=small";
+    // script.async = true;
+    //
+    // document.body.appendChild(script);
   }
 
   render(){
@@ -37,12 +44,14 @@ class Home extends React.Component {
     let podcastFirst;
     let soundcloudUrlId;
     let soundcloudSource;
+    let buzzsproutId;
     try {
       if (podcasts !== undefined){
         podcasts = podcasts.sort((a,b) => {return b.id - a.id})
         podcastFirst = podcasts[0]
         if (podcastFirst !== undefined){
           soundcloudUrlId = podcastFirst.url
+          buzzsproutId = "buzzsprout-player-" + podcastFirst.url.split("-")[0]
         }
       }
     }
@@ -52,17 +61,43 @@ class Home extends React.Component {
 
     soundcloudSource = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${soundcloudUrlId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`
 
+    const script = document.createElement("script");
+    if (podcasts !== undefined && podcastFirst !== undefined){
+      script.src = `https://www.buzzsprout.com/1555001/${podcastFirst.url}?container_id=buzzsprout-player-${podcastFirst.url.split("-")[0]}&player=small`;
+      script.async = true;
+
+      document.body.appendChild(script);
+    }
 
     return (
       <div className="Home">
         <img className="logo-home" src={logo}/>
-        {podcastFirst ? <div><Link to={`/podcast`} style={{ textDecoration: 'none', color: "inherit" }}><div className="podcast-headline"><h3>Latest Echomusings Podcast Epidsode: {podcastFirst.title}</h3>
-        </div></Link><div className="podcast-home">
-          <iframe width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" src={soundcloudSource}></iframe><div className="iframePlayer"></div>
-        </div></div> : ''}
+        {podcastFirst ?
+        <section>
+          <Link to={`/podcast`} style={{ textDecoration: 'none', color: "inherit" }}>
+            <div className="podcast-headline">
+              <h3>Latest Echomusings Podcast Epidsode: {podcastFirst.title}</h3>
+            </div>
+          </Link>
+
+          { podcastFirst.embed_type === "tracks" || podcastFirst.embed_type === "playlists" ?
+          <div className="podcast-home">
+            <iframe width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay" src={soundcloudSource}></iframe>
+            <div className="iframePlayer"></div>
+          </div>
+          : ""
+          }
+
+          { podcastFirst.embed_type === "buzzsprout" ?
+          <div className="podcast-home" id={buzzsproutId}></div>
+          : ""
+          }
+
+        </section>
+        : ''
+        }
 
         <div className="article-container">{latestArticle}{secondLatestArticle}</div>
-
 
       </div>
     );
