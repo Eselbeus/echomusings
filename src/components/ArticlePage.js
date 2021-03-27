@@ -24,8 +24,6 @@ class ArticlePage extends React.Component {
   componentDidMount(){
     this.props.getArticles()
     let article_id = this.props.match.params.id
-    console.log(article_id, "id")
-    console.log(this.props, "art")
     article_id = parseInt(article_id)
     let articleInfo;
     if (this.props.articles.articles !== undefined){
