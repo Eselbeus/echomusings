@@ -30,7 +30,7 @@ class Podcasts extends React.Component {
     let description = e.target.description.value
     let url = e.target.url.value
     let embedType;
-    if (url.includes("tracks") || url.includes("playlists") || url.includes("buzzsprout") ){
+    if (url.includes("tracks") || url.includes("playlists") || (url.includes("buzzsprout") && url.includes("1555001/")) ){
       let urlArr;
       if (url.includes("buzzsprout")){
         urlArr = url.split("www.buzzsprout.com/1555001/")
