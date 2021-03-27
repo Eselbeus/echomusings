@@ -75,7 +75,7 @@ class ArticlePage extends React.Component {
       })
     }
 
-    fetch(`https://echo-musings.herokuapp.com/articles/${id}`, config)
+    fetch(`https://echo-musings.herokuapp.com/api/v1/articles/${id}`, config)
       .then(res => res.json())
       .then(res => {this.setState({article: res, title: '',
         imagelink: '',
