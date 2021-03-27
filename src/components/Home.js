@@ -11,13 +11,6 @@ class Home extends React.Component {
   componentDidMount() {
     this.props.getArticles()
     this.props.getPodcasts()
-
-    // const script = document.createElement("script");
-    //
-    // script.src = "https://www.buzzsprout.com/1555001/8208202-current-music-scene-industry-topics-a-live-music-and-comedy-event-during-the-pandemic.js?container_id=buzzsprout-player-8208202&player=small";
-    // script.async = true;
-    //
-    // document.body.appendChild(script);
   }
 
   render(){

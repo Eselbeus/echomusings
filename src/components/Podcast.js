@@ -50,9 +50,8 @@ class Podcast extends React.Component {
       .then(res => res.json())
       .then(res => {this.setState({podcast: res, title: '',
         subtitle: '', description: ''
-      }, console.log(res))
-      console.log(this.props)
       })
+    })
   }
 
   deleteConfirm = (e) => {
